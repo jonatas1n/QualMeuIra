@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IRA | UnB</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+    <script src="https://kit.fontawesome.com/636775e1e6.js" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <template id="semestre">
+        <div class="card">
+            <div class="card-body">
+                <h4></h4>
+                <div class="d-flex">
+                    <p class="semestre-credito"></p>
+                    <p class="semestre-mencao"></p>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!-- Button trigger modal -->
+    <!-- <script>
+        var myModalEl = document.getElementById('welcome')
+        var modal = bootstrap.Modal.getInstance(myModalEl) // Returns a Bootstrap modal instance
+
+        console.log(modal);
+
+        // window.onload = function() {
+        //     modal.show()
+        // }
+    </script> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="welcome" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content p-5">
+                <div class="modal-body row text-center">
+                    <h1>Bem vindo à Calculadora de IRA</h1>
+                    <h5 class="col-8 offset-2 p-3"><i>Desenvolvi essa calculadora Lorem ipsum dolor sit amet
+                            consectetur, adipisicing elit. Delectus magni tenetur veniam ut repellendus sapiente
+                            provident aspernatur atque ab. Distinctio?</i></h5>
+                    <button type="button" class="btn btn-primary col-6 offset-3"
+                        data-bs-dismiss="modal">Começar!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <header class="bg-dark row no-gutters">
+        <div class="col-6">
+            <h1 class="p-2" style="color: white;">Calculadora de IRA</h1>
+        </div>
+        <h2 class="p-2 border col-4 offset-2 text-center bg-success" id="ira-counter">IRA: 5.0</h2>
+    </header>
+    <main class="container-fluid p-4">
+        <div class="row">
+            <div class="col-sm-12 col-lg-6 col-md-12">
+                <div class="card shadow p-3">
+                    <div class="card-body row" style="margin: auto">
+                        <div class="col-12 m-2">
+                            <label class="form-label" for="">
+                                <i class="fas fa-signature"></i>
+                                <b>Nome da Matéria</b></label>
+                            <input id="nome-materia" class="form-control w-100" type="text" placeholder="Opcional">
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-lg-12 m-2">
+                            <label class="form-label" for=""><i class="fas fa-coins"></i> <b>Créditos da disciplina:
+                                </b></label>
+                            <div class="d-flex">
+                                <div class="p-2">
+                                    <input type="radio" value="1" name="creditos" class="form-check-input">
+                                    <label for="creditos" class="form-check-label">1c</label>
+                                </div>
+                                <div class="p-2">
+                                    <input type="radio" value="2" name="creditos" class="form-check-input">
+                                    <label for="creditos" class="form-check-label">2c</label>
+                                </div>
+                                <div class="p-2">
+                                    <input type="radio" value="3" name="creditos" class="form-check-input">
+                                    <label for="creditos" class="form-check-label">3c</label>
+                                </div>
+                                <div class="p-2">
+                                    <input type="radio" value="4" name="creditos" class="form-check-input">
+                                    <label for="creditos" class="form-check-label">4c</label>
+                                </div>
+                                <div class="p-2">
+                                    <input type="radio" value="5" name="creditos" class="form-check-input">
+                                    <label for="creditos" class="form-check-label">5c</label>
+                                </div>
+                                <div class="p-2">
+                                    <input type="radio" value="6" name="creditos" class="form-check-input">
+                                    <label for="creditos" class="form-check-label">6c</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-lg-12 m-2" style="margin-bottom: 20px;">
+                            <label class="form-label" for=""><i class="fas fa-trophy"></i> <b>Menção Obtida:
+                                </b></label>
+                            <div class="d-flex" style="gap: 20px;">
+                                <input type="radio" name="mencoes" id="SR" class="btn-check">
+                                <label for="SR" class="fw-bold btn btn-outline-secondary">SR</label>
+
+                                <input type="radio" name="mencoes" id="II" class="btn-check">
+                                <label for="II" class="fw-bold btn btn-outline-danger">II</label>
+
+                                <input type="radio" name="mencoes" id="MI" class="btn-check">
+                                <label for="MI" class="fw-bold btn btn-outline-danger">MI</label>
+
+                                <input type="radio" name="mencoes" id="MM" class="btn-check">
+                                <label for="MM" class="fw-bold btn btn-outline-success">MM</label>
+
+                                <input type="radio" name="mencoes" id="MS" class="btn-check">
+                                <label for="MS" class="fw-bold btn btn-outline-success">MS</label>
+
+                                <input type="radio" name="mencoes" id="SS" class="btn-check">
+                                <label for="SS" class="fw-bold btn btn-outline-success bold">SS</label>
+                            </div>
+                        </div>
+                        <div class="col-12 m-2">
+                            <button id="add-materia" class="btn w-100 btn-primary"><i class="fas fa-plus"></i>
+                                Adicionar
+                                Matéria</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6 col-md-12 bg-light">
+                <div id="semestrePanel" class="row d-flex">
+                    <button id="proximo-semestre" class="btn btn-primary col-2">Anterior <i class="fas fa-chevron-left"></i></button>
+                    <h4 id="semestrePanelView" class="col-8 rounded p-2 text-center">Semestre X</h4>
+                    <button id="anterior-semestre" class="btn btn-primary col-2">Próximo <i class="fas fa-chevron-right"></i></button>
+                    <hr>
+                </div>
+                <ul class="bg-light" id="semestres">
+
+                </ul>
+            </div>
+        </div>
+    </main>
+
+</body>
+<script src="run.js"></script>
+
+</html>

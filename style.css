@@ -1,0 +1,25 @@
+#ira-counter {
+    color: white;
+    border-bottom-left-radius: 20px;
+    border: none !important;
+}
+
+main, html, header {
+    background-color: #dedede;
+}
+
+header div{
+    border-bottom-right-radius: 20px;
+}
+
+#semestres{
+    list-style: none;
+    padding: 0;
+}
+
+#semestres li{
+    margin-top: 15px;
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+}
