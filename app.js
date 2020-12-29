@@ -1,20 +1,17 @@
 calculadoraIRA = {
     semestres: [],
     mencoes: ['SR', 'II', 'MI', 'MM', 'MS', 'SS'],
-    valX: 0,
-    valY: 0,
+    valX: 0, // Parâmetro de cálculo para o IRA
+    valY: 0, // Parâmetro de cálculo para o IRA
     semestreID: 0,
     materiaID: 0,
 
-    ira() {
-        if(this.semestres.length == 1 && this.semestres[0].length == 0) return 5.00
-        else{
-            // this.calculaIRA()
-            return this.valX / this.valY
-        }
+    ira() { // Função que retorna o valor o IRA
+        if(this.valX == this.valY && this.valY == 0) return 5.0
+        return this.valX / this.valY
     },
 
-    newSemestre(){
+    newSemestre(){ // Função que insere um novo semestre na lista de semestres
         this.semestres.push({
             id: this.semestreID,
             materias: []
@@ -23,18 +20,21 @@ calculadoraIRA = {
         this.semestreID++
     },
 
-    calculaIRA(){
+    calculaIRA(){ // Função que faz a leitura de todos os semestres registrados e calcula ou atualiza os parâmetros para o cálculo  do IRA
+        this.valX = 0
+        this.valY = 0
+        
         this.semestres.forEach( semestre => {
             console.log(semestre)
             semestre.materias.forEach( ({mencao, creditos}, it) => {
                 this.valX += this.mencoes.indexOf(mencao) * creditos * (it + 1)
                 this.valY += creditos * (it + 1)
-                console.log('IRA: ', this.ira())
+                console.log('IRA: ', this.ira()) 
             })
         });
     },
 
-    addMateria(nome, creditos, mencao){
+    addMateria(nome, creditos, mencao, pos){ // Função que insere uma nova matéria no semestre
         var materia = {
             id: this.materiaID,
             nome: nome,
@@ -46,7 +46,18 @@ calculadoraIRA = {
 
         if(this.semestres.length == 0) this.newSemestre()
 
-        this.semestres[this.semestres.length - 1].materias.push(materia)
+        this.semestres[pos].materias.push(materia)
+    },
+
+    delMateria(ID){
+        this.semestres.forEach( ({id, materias}) => {
+            for(let i = 0; i < materias.length; i++){
+                if(materias[i].id == ID) {
+                    materias.splice(i)
+                    return
+                }
+            }
+        } )
     }
 
 }
