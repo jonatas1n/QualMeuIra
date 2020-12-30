@@ -1,20 +1,22 @@
-var counter = document.getElementById('ira-counter') //Objeto com o contador do IRA
-var icon = document.getElementById('icon')
-var logo = document.getElementById('logo')
-var openModal = document.getElementById('open-modal')
+const counter = document.getElementById('ira-counter') //Objeto com o contador do IRA
+const icon = document.getElementById('icon')
+const logo = document.getElementById('logo')
+const openModal = document.getElementById('open-modal')
 
-var loginArea = document.getElementById('login')
+const loginArea = document.getElementById('login')
 
-var addMateriaBtn = document.getElementById('add-materia') 
-var nomeEl = document.getElementById('nome-materia') 
-var creditosEl = document.getElementsByName('creditos') 
-var mencaoEl = document.getElementsByName('mencoes') 
+const templateMateria = document.getElementById('tpl-materia')
 
-var semestresArea = document.getElementById('semestres') 
-var semestrePanelView = document.getElementById('semestrePanelView')
+const addMateriaBtn = document.getElementById('add-materia') 
+const nomeEl = document.getElementById('name-materia') 
+const creditosEl = document.getElementsByName('creditos') 
+const mencaoEl = document.getElementsByName('mencoes') 
 
-var proximoSemestreEl = document.getElementById('proximo-semestre')
-var anteriorSemestreEl = document.getElementById('anterior-semestre')
+const semestresArea = document.getElementById('semestres') 
+const semestrePanelView = document.getElementById('semestrePanelView')
+
+const proximoSemestreEl = document.getElementById('proximo-semestre')
+const anteriorSemestreEl = document.getElementById('anterior-semestre')
 
 const state = {
     semestre: 0,
@@ -29,6 +31,7 @@ function proximoSemestre(){
     if (state.semestre == calculadoraIRA.semestres.length - 1){
         calculadoraIRA.newSemestre()
     }
+
     state.semestre++
     
     updateSemestre()
@@ -43,6 +46,7 @@ function anteriorSemestre(){
 
 function setIRA(){ // Função chamada para calcular o IRA e exibi-lo
     let ira = calculadoraIRA.ira()
+    ira = ira.toFixed(4)
     counter.innerHTML = `<b>IRA: ${ira}</b>`
 }
 
@@ -52,97 +56,11 @@ function updateSemestre(){
     semestrePanelView.innerHTML = `Semestre ${state.semestre + 1}`
 
     semestresArea.innerHTML = ''
-    semestre.materias.forEach( el => {
-        var li = document.createElement('li')
-        var div = document.createElement('div')
-        var dados = document.createElement('div')
-        var options = document.createElement('div')
-        var editBtn = document.createElement('button')
-        var excludeBtn = document.createElement('button')
-
-        li.classList.add('bg-light')
-        li.classList.add('shadow')
-        li.classList.add('rounded')
-        li.classList.add('p-3')
-
-        div.classList.add('row')
-
-        dados.classList.add('d-flex')
-        dados.classList.add('col-8')
-        dados.classList.add('row')
-        dados.style.gap = '20px'
-
-        options.classList.add('col-4')
-        options.classList.add('options')
-
-        editBtn.classList.add('btn')
-        editBtn.classList.add('btn-outline-dark')
-        editBtn.innerHTML = '<i class="fas fa-edit"></i>'
-        editBtn.onclick = function() {
-            nomeEl.innerHTML = el.nome
-            nomeEl.value = el.nome
-            
-            var mencao = Array.prototype.slice.call( mencaoEl, 0 );
-            mencao = mencao.filter(elem => elem.id == el.mencao)[0]
-            mencao.checked = true
-
-            var creditos = Array.prototype.slice.call( creditosEl, 0 );
-            creditos = creditos.filter(elem => elem.value == el.creditos)[0]
-            creditos.checked = true
-
-            calculadoraIRA.delMateria(el.id)
-            updateSemestre()
-            calculadoraIRA.calculaIRA()
-            setIRA()
-        }
-        
-        excludeBtn.classList.add('btn')
-        excludeBtn.classList.add('btn-outline-dark')
-        excludeBtn.innerHTML = '<i class="fas fa-trash"></i>'
-        excludeBtn.onclick = function(){
-            calculadoraIRA.delMateria(el.id)
-            updateSemestre()
-            calculadoraIRA.calculaIRA()
-            setIRA()
-        }
-
-        options.appendChild(editBtn)
-        options.appendChild(excludeBtn)
-
-        var h4 = document.createElement('h3')
-        h4.classList.add('col-12')
-        h4.style.textTransform = 'capitalize'
-        h4.innerHTML = el.nome
-
-        var p1 = document.createElement('h5')
-        p1.classList.add('col-5')
-        p1.innerHTML = `<h5><i class="fas fa-coins"></i> Créditos: <b>${el.creditos}</b></h5>`
-        
-        var p2 = document.createElement('h5')
-        p2.classList.add('col-5')
-        p2.innerHTML = `<h5><i class="fas fa-trophy"></i> Menção: <b>${el.mencao}</b></h5>`
-
-        dados.appendChild(h4)
-        dados.appendChild(p1)
-        dados.appendChild(p2)
-        div.appendChild(dados)
-        div.appendChild(options)
-        li.appendChild(div)
-
-        // Animação
-        setTimeout(function() {
-            li.style.opacity = 1
-        }, 250)
-
-        semestresArea.appendChild(li)
-    } )
-}
-
-function hideLogin(){
-    loginArea.style.opacity = 0
-    setTimeout(function() {
-        loginArea.classList.add('d-none')
-    }, 200)
+    
+    //Implementar template nessa fase
+    semestre.materias.forEach(el => {
+        gui.materia(el)
+    })
 }
 
 addMateriaBtn.addEventListener('click', () => {
@@ -155,7 +73,6 @@ addMateriaBtn.addEventListener('click', () => {
     var creditos = Array.prototype.slice.call( creditosEl, 0 );
     creditos = creditos.filter(elem => elem.checked)
     creditosVal = creditos[0].value
-
 
     calculadoraIRA.addMateria(nome, creditosVal, mencaoVal, state.semestre);
     calculadoraIRA.calculaIRA();
@@ -179,5 +96,5 @@ window.onload = function(){
     openModal.click()
 }
 
-proximoSemestreEl.addEventListener('click', function() {proximoSemestre()})
-anteriorSemestreEl.addEventListener('click', function() {anteriorSemestre()})
+proximoSemestreEl.addEventListener('click', proximoSemestre)
+anteriorSemestreEl.addEventListener('click', anteriorSemestre)
