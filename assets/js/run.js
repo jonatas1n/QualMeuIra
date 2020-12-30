@@ -38,28 +38,30 @@ function alteraApaga() {
 function readCookie() {
     var cookies = document.cookie.split(';')
 
-    cookies = cookies.map(elem => elem.split('='))
-    cookies.forEach(function (elem) {
-        var list = elem[1].split('/')
-        list = list.filter(elem => elem.length > 0)
-        list = list.map(elem => elem.trim().split('|'))
-        cookieObj[elem[0].trim()] = list
-    })
-
-    cookieObj['size'] = parseInt(cookieObj['size'][0])
-
-    for (let i = 0; i < cookieObj['size']; i++) {
-        calculadoraIRA.newSemestre()
-        var dados = cookieObj['s' + i]
-
-        if (dados) {
-            dados.forEach(elem => {
-                calculadoraIRA.addMateria(elem[0], elem[1], elem[2], i)
-            })
+    if(cookies.length > 0){
+        cookies = cookies.map(elem => elem.split('='))
+        cookies.forEach(function (elem) {
+            var list = elem[1].split('/')
+            list = list.filter(elem => elem.length > 0)
+            list = list.map(elem => elem.trim().split('|'))
+            cookieObj[elem[0].trim()] = list
+        })
+    
+        cookieObj['size'] = parseInt(cookieObj['size'][0])
+    
+        for (let i = 0; i < cookieObj['size']; i++) {
+            calculadoraIRA.newSemestre()
+            var dados = cookieObj['s' + i]
+    
+            if (dados) {
+                dados.forEach(elem => {
+                    calculadoraIRA.addMateria(elem[0], elem[1], elem[2], i)
+                })
+            }
         }
+    
+        updateSemestre()
     }
-
-    updateSemestre()
 }
 
 function proximoSemestre() {
