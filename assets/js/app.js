@@ -25,11 +25,9 @@ calculadoraIRA = {
         this.valY = 0
         
         this.semestres.forEach( semestre => {
-            console.log(semestre)
             semestre.materias.forEach( ({mencao, creditos}, it) => {
                 this.valX += this.mencoes.indexOf(mencao) * creditos * (it + 1)
                 this.valY += creditos * (it + 1)
-                console.log('IRA: ', this.ira()) 
             })
         });
     },

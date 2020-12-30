@@ -1,11 +1,13 @@
 const modal = new bootstrap.Modal(document.getElementById('welcome'))
 const modalEl = document.getElementById('welcome')
 
-const counter = document.getElementById('ira-counter') //Objeto com o contador do IRA
+const counter = document.getElementById('ira-counter')
 const icon = document.getElementById('icon')
 const logo = document.getElementById('logo')
 
 const loginArea = document.getElementById('login')
+
+const form = document.getElementById('form-materia')
 
 const templateMateria = document.getElementById('tpl-materia')
 
@@ -48,11 +50,10 @@ function readCookie() {
 
     for (let i = 0; i < cookieObj['size']; i++) {
         calculadoraIRA.newSemestre()
-        var dados = (cookieObj['s' + i])
-        console.log(dados)
+        var dados = cookieObj['s' + i]
+
         if (dados) {
             dados.forEach(elem => {
-                console.log(elem)
                 calculadoraIRA.addMateria(elem[0], elem[1], elem[2], i)
             })
         }
@@ -162,7 +163,6 @@ addMateriaBtn.addEventListener('click', () => {
 
 modalEl.addEventListener('hide.bs.modal', showHeader)
 
-
 proximoSemestreEl.addEventListener('click', proximoSemestre)
 anteriorSemestreEl.addEventListener('click', anteriorSemestre)
 
@@ -170,6 +170,4 @@ calculadoraIRA.newSemestre()
 readCookie()
 calculadoraIRA.calculaIRA()
 setIRA();
-window.onload = function () {
-    modal.show()
-}
+window.onload = modal.show()
