@@ -33,7 +33,7 @@
                 </div>
                 <div class="modal-body row text-left">
                     <img src="SVG/feliz.svg" alt="" class="col-4">
-                    <div class="col-7 p-3 m-3">
+                    <div class="col-lg-7 col-12 p-3 m-3">
                         <h1>Este é o <i>Qual Meu IRA?</i></h1>
                         <h5>Para facilitar a vida dos estudantes da Universidade de Brasília, desenvolvi esse site que
                             realiza
@@ -45,17 +45,21 @@
                             validade como documento.
                             <br>
                             <br>
-                            <div style="width: fit-content; background-color: rgba(197, 74, 105, 0.1);" class="p-4 rounded border">
+                            <div style="width: fit-content; background-color: rgba(197, 74, 105, 0.1);"
+                                class="p-4 rounded border">
                                 <small>
                                     <i>Espero que gostem e façam bom proveito!</i> <i class="fas fa-hand-peace"></i>
                                     <br>
-                                    <a style="text-decoration: none;" href="github.com/jonatas1n"> - Jônatas G. Barbosa da Silva</a>
+                                    <a style="text-decoration: none;" href="https://www.github.com/jonatas1n"> - Jônatas G. Barbosa
+                                        da Silva</a>
                                 </small>
                             </div>
                         </h5>
                     </div>
-                    <button type="button" class="btn btn-primary col-6 offset-3"
-                        data-bs-dismiss="modal"><b>Qual é o meu IRA?</b></button>
+                </div>
+                <div class="modal-header">
+                    <button type="button" class="btn btn-primary col-6 offset-3" data-bs-dismiss="modal"><b>Vamos
+                            lá!</b></button>
                 </div>
             </div>
         </div>
@@ -63,14 +67,38 @@
 
     <header class="row m-0">
         <div class="col-4">
-            <img src="SVG/Logo.svg" alt="logo" id="logo" class="p-2">
+            <img src="SVG/Logo.svg" alt="logo" id="logo" class="shadow p-2 bg-light">
         </div>
         <!-- <button type="button" data-bs-toggle="modal" style="margin-top: 18px;" data-bs-target="#formula" class="btn btn-primary col-2 h-75">Como se calcula o IRA?</button> -->
         <h2 class="p-2 border col-4 offset-4 text-center" id="ira-counter">IRA: 5.0</h2>
     </header>
     <main class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 col-lg-6 col-md-12 mb-lg-0 mb-md-2 mb-sm-2">
+            <div class="col-sm-12 col-lg-6 col-md-12 mb-lg-0 mb-md-4 mb-sm-4">
+                <div id="login" class="card shadow p-3 mb-3">
+                    <div class="card-body">
+                        <div style="display: grid; grid-template-columns: 2fr 1fr; place-items: center">
+                            <div>
+                                <h2 class="mb-2">Você não está logado.</h2>
+                                <h4 class="mb-3">
+                                    Você pode guardar seus dados e fazer consultas de qualquer dispositivo,
+                                    quantas vezes quiser!
+                                    <i class="fas fa-smile-beam"></i>
+                                </h4>
+                            </div>
+                            <button class="btn btn-lg btn-secondary"><i class="fas fa-pen"></i> Fazer Cadastro</button>
+                        </div>
+                        <hr>
+                        <div class="d-flex" style="justify-content: space-between;">
+                            <div class="d-flex" style="place-items: center; gap: 15px;">
+                                <h5><i>Já tem cadastro?</i></h5>
+                                <button class="btn btn-secondary"><i class="fas fa-sign-in-alt"></i> Login</button>
+                            </div>
+                            <button onclick="hideLogin()" class="btn btn-dark"><i class="fas fa-times"></i> Ignorar</button>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="card shadow p-3">
                     <div class="card-body w-100">
                         <div class="col-12 my-4">
@@ -80,7 +108,7 @@
                             <input id="nome-materia" class="form-control w-100" type="text">
                         </div>
 
-                        <div class="col-md-6 col-sm-6 col-lg-12 my-4">
+                        <div class="col-md-12 col-sm-12 col-lg-6 my-4">
                             <label class="form-label" for="creditos">
                                 <i class="fas fa-coins"></i> <b>Créditos da disciplina:</b>
                             </label>
@@ -112,11 +140,11 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6 col-sm-6 col-lg-12 my-4" style="margin-bottom: 20px;">
+                        <div class="col-md-12 col-sm-12 col-lg-6 my-4" style="overflow-x: auto; margin-bottom: 20px;">
                             <label class="form-label" for=""><i class="fas fa-trophy"></i>
                                 <b>Menção Obtida:</b>
                             </label>
-                            <div class="d-flex" style="gap: 20px;">
+                            <div class="d-flex" style="gap: 15px;">
                                 <input type="radio" name="mencoes" id="SR" class="btn-check">
                                 <label for="SR" class="fw-bold btn btn-outline-secondary">SR</label>
 
@@ -152,26 +180,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-12 d-none text-center">
-                    <img id="icon" src="SVG/feliz.svg">
-                </div>
             </div>
-            <div class="col-sm-12 col-lg-6 col-md-12 bg-light shadow rounded">
-                <div id="semestrePanel" class="d-flex">
-                    <button id="anterior-semestre" class="btn btn-primary col-2">
-                        <i class="fas fa-chevron-left"></i> Anterior
+            <div class="col-sm-12 col-lg-6 col-md-12 my-4 my-lg-0">
+                <div id="semestrePanel" class="d-flex bg-light shadow rounded border">
+                    <button id="anterior-semestre" class="btn btn-primary col-3">
+                        Anterior
+                        <br>
+                        <i class="fas fa-angle-double-left"></i>
                     </button>
-                    <h4 id="semestrePanelView" class="col-8 rounded p-2 mt-2 text-center">Semestre X</h4>
-                    <button id="proximo-semestre" class="btn btn-primary col-2">
-                        Próximo <i class="fas fa-chevron-right"></i>
+                    <h4 id="semestrePanelView" class="col-6 rounded p-2 mt-2 text-center">Semestre X</h4>
+                    <button id="proximo-semestre" class="btn btn-primary col-3">
+                        Próximo
+                        <br>
+                        <i class="fas fa-angle-double-right"></i>
                     </button>
-                    <hr>
                 </div>
-                <ul class="bg-light" id="semestres">
+                <ul class="bg-light h-100" id="semestres">
                 </ul>
             </div>
         </div>
+        <div id="sobre" class="d-flex mb-3 mx-3" style="place-items: center; gap: 15px">
+            <img id="universidade" src="SVG/unb.svg" alt="">
+            <a href="www.github.com/jonatas1n">Aplicação desenvolvida por Jônatas Gomes</a>
+        </div>
     </main>
+
 
 </body>
 <script src="run.js"></script>

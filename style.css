@@ -8,6 +8,7 @@
 main, html, header {
     background-color: #dedede;
     font-family: 'Nunito Sans', sans-serif;
+    transition: .5s;
 }
 
 header {
@@ -74,4 +75,26 @@ header div{
 .btn-primary{
     background-color: #38405F !important;
     border-color: #38405F !important;
+}
+
+.btn-secondary{
+    background-color: #C54A69 !important;
+    border-color: #C54A69 !important;
+}
+
+#sobre {
+    opacity: .4;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#universidade {
+    width: 100px;
+}
+
+#sobre a{
+    text-decoration: none;
+    color: black;
 }

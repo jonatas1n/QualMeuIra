@@ -3,6 +3,8 @@ var icon = document.getElementById('icon')
 var logo = document.getElementById('logo')
 var openModal = document.getElementById('open-modal')
 
+var loginArea = document.getElementById('login')
+
 var addMateriaBtn = document.getElementById('add-materia') 
 var nomeEl = document.getElementById('nome-materia') 
 var creditosEl = document.getElementsByName('creditos') 
@@ -41,15 +43,7 @@ function anteriorSemestre(){
 
 function setIRA(){ // Função chamada para calcular o IRA e exibi-lo
     let ira = calculadoraIRA.ira()
-    counter.innerHTML = `IRA: ${ira}`
-
-    // if(ira < 3){
-    //     counter.classList.remove('bg-success')
-    //     counter.classList.add('bg-danger')
-    // } else {
-    //     counter.classList.add('bg-success')
-    //     counter.classList.remove('bg-danger')
-    // }
+    counter.innerHTML = `<b>IRA: ${ira}</b>`
 }
 
 function updateSemestre(){
@@ -144,6 +138,13 @@ function updateSemestre(){
     } )
 }
 
+function hideLogin(){
+    loginArea.style.opacity = 0
+    setTimeout(function() {
+        loginArea.classList.add('d-none')
+    }, 200)
+}
+
 addMateriaBtn.addEventListener('click', () => {
     var nome = nomeEl.value
 
@@ -172,7 +173,6 @@ addMateriaBtn.addEventListener('click', () => {
 calculadoraIRA.newSemestre()
 setIRA();
 updateSemestre()
-icon.style.left = '0'
 logo.style.top = '10px'
 logo.style.transform = 'rotate(-8deg)'
 window.onload = function(){
