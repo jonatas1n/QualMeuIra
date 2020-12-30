@@ -36,9 +36,9 @@ function alteraApaga() {
 }
 
 function readCookie() {
+    if(document.cookie.length > 0){
     var cookies = document.cookie.split(';')
 
-    if(cookies.length > 0){
         cookies = cookies.map(elem => elem.split('='))
         cookies.forEach(function (elem) {
             var list = elem[1].split('/')
