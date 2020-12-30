@@ -68,6 +68,8 @@ gui = {
         p2.classList.add('col-6')
         if(['SS', 'MS', 'MM'].includes(el.mencao)){
             p2.classList.add('text-success')
+        } else if(el.mencao == 'SR'){
+            p2.classList.add('text-secondary')
         } else {
             p2.classList.add('text-danger')
         }

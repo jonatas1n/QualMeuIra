@@ -14,6 +14,8 @@ const nomeEl = document.getElementById('name-materia')
 const creditosEl = document.getElementsByName('creditos')
 const mencaoEl = document.getElementsByName('mencoes')
 
+const clearAllBtn = document.getElementById('clear-all-btn')
+
 const semestresArea = document.getElementById('semestres')
 const semestrePanelView = document.getElementById('semestrePanelView')
 
@@ -118,6 +120,14 @@ function updateSemestre() {
 
     document.cookie = `s${state.semestre}=${cookie}`
     document.cookie = `size=${calculadoraIRA.semestres.length}`
+
+    setTimeout(function(){
+        if(calculadoraIRA.semestres.length > 0){
+            clearAllBtn.classList.remove('d-none')
+        } else {
+            clearAllBtn.classList.add('d-none')
+        }
+    }, 1000)
 }
 
 function showHeader() {
