@@ -24,7 +24,8 @@ main {
 }
 
 #logo-modal{
-    object-fit: contain;
+    object-fit: contain !important;
+    width: 45%;
     margin: auto;
 }
 
