@@ -11,10 +11,12 @@ const form = document.getElementById('form-materia')
 
 const templateMateria = document.getElementById('tpl-materia')
 
-const addMateriaBtn = document.getElementById('add-materia')
+const historicoForm = document.getElementById('historico-form')
+const historicoArea = document.getElementById('historico-area')
 const nomeEl = document.getElementById('name-materia')
 const creditosEl = document.getElementsByName('creditos')
 const mencaoEl = document.getElementsByName('mencoes')
+const addMateriaBtn = document.getElementById('add-materia')
 
 const clearAllBtn = document.getElementById('clear-all-btn')
 
@@ -28,11 +30,19 @@ const cookieObj = {}
 
 const state = {
     semestre: 0,
-    apaga: false
+    apaga: false,
+    historico: false
 }
 
 function alteraApaga() {
     state.apaga = !state.apaga
+}
+
+function historico(){
+    state.historico = !state.historico
+    
+    historicoArea.classList.toggle('bg-pink')
+    historicoForm.classList.toggle('d-none')
 }
 
 function readCookie() {
