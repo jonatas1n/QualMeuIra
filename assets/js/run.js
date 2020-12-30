@@ -109,6 +109,7 @@ function cleanAll(){
 
 function updateSemestre() {
     var semestre = calculadoraIRA.semestres[state.semestre]
+    semestre.materias = semestre.materias.reverse()
 
     semestrePanelView.innerHTML = `Semestre ${state.semestre + 1}`
 
