@@ -2,6 +2,7 @@
     color: white;
     border-bottom-left-radius: 20px;
     border: none !important;
+    opacity: 0;
     background-color: #C54A69;
 }
 
@@ -15,6 +16,7 @@ header {
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 800;
     background-color: #0E131F;
+    transition: 1s;
 }
 
 main {
@@ -39,7 +41,7 @@ main {
     position: relative;
     height: auto;
     margin: -15px 0;
-    top: -120%;
+    top: -145%;
     left: 20px;
     transition: 1s;
     transform: rotate(12deg);

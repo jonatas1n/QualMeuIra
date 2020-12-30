@@ -63,6 +63,12 @@ function updateSemestre(){
     })
 }
 
+function showHeader(){
+    logo.style.top = '10px'
+    logo.style.transform = 'rotate(-8deg)'
+    counter.style.opacity = '1'
+}
+
 addMateriaBtn.addEventListener('click', () => {
     var nome = nomeEl.value
 
@@ -90,8 +96,6 @@ addMateriaBtn.addEventListener('click', () => {
 calculadoraIRA.newSemestre()
 setIRA();
 updateSemestre()
-logo.style.top = '10px'
-logo.style.transform = 'rotate(-8deg)'
 window.onload = function(){
     openModal.click()
 }
