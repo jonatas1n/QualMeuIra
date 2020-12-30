@@ -26,7 +26,7 @@
         data-bs-target="#welcome"></button>
 
     <div class="modal fade" id="welcome" tabindex="-1" aria-labelledby="welcome" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
             <div class="modal-content p-5">
                 <div class="modal-header text-center">
                     <img src="SVG/Logo.svg" id="logo-modal">
@@ -61,78 +61,58 @@
         </div>
     </div>
 
-    <div class="modal fade" id="formula" tabindex="-1" aria-labelledby="formula" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-            <div class="modal-content p-5">
-                <div class="modal-body">
-                    <div class="">
-                        <h1>Como é feito cálculo do IRA?</h1>
-                        <h5>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Doloremque quibusdam cumque, a nisi asperiores omnis dolorem harum
-                            laboriosam quasi et ipsum qui perferendis rem maiores!
-                        </h5>
-                        <br>
-                    </div>
-                    <button type="button" class="btn btn-primary col-8 offset-2"
-                        data-bs-dismiss="modal"><h4>Agora, eu entendi! Agora eu saquei!</h4> <i class="fas fa-laugh-squint"></i></button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <header class="row m-0">
         <div class="col-4">
             <img src="SVG/Logo.svg" alt="logo" id="logo" class="p-2">
         </div>
-        <button type="button" data-bs-toggle="modal" style="margin-top: 18px;" data-bs-target="#formula" class="btn btn-primary col-2 h-75">Como se calcula o IRA?</button>
-        <h2 class="p-2 border col-4 offset-2 text-center" id="ira-counter">IRA: 5.0</h2>
+        <!-- <button type="button" data-bs-toggle="modal" style="margin-top: 18px;" data-bs-target="#formula" class="btn btn-primary col-2 h-75">Como se calcula o IRA?</button> -->
+        <h2 class="p-2 border col-4 offset-4 text-center" id="ira-counter">IRA: 5.0</h2>
     </header>
     <main class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 col-lg-6 col-md-12">
+            <div class="col-sm-12 col-lg-6 col-md-12 mb-lg-0 mb-md-2 mb-sm-2">
                 <div class="card shadow p-3">
                     <div class="card-body w-100">
-                        <div class="col-12 m-2">
+                        <div class="col-12 my-4">
                             <label class="form-label" for="nome-materia">
                                 <i class="fas fa-signature"></i>
                                 <b>Nome da Matéria</b></label>
                             <input id="nome-materia" class="form-control w-100" type="text">
                         </div>
 
-                        <div class="col-md-6 col-sm-6 col-lg-12 m-2">
+                        <div class="col-md-6 col-sm-6 col-lg-12 my-4">
                             <label class="form-label" for="creditos">
                                 <i class="fas fa-coins"></i> <b>Créditos da disciplina:</b>
                             </label>
                             <div class="d-flex">
-                                <div class="p-2">
+                                <div class="px-2">
                                     <input type="radio" value="1" name="creditos" class="form-check-input">
                                     <label for="creditos" class="form-check-label">1c</label>
                                 </div>
-                                <div class="p-2">
+                                <div class="px-2">
                                     <input type="radio" value="2" name="creditos" class="form-check-input">
                                     <label for="creditos" class="form-check-label">2c</label>
                                 </div>
-                                <div class="p-2">
+                                <div class="px-2">
                                     <input type="radio" value="3" name="creditos" class="form-check-input">
                                     <label for="creditos" class="form-check-label">3c</label>
                                 </div>
-                                <div class="p-2">
+                                <div class="px-2">
                                     <input type="radio" value="4" name="creditos" class="form-check-input">
                                     <label for="creditos" class="form-check-label">4c</label>
                                 </div>
-                                <div class="p-2">
+                                <div class="px-2">
                                     <input type="radio" value="5" name="creditos" class="form-check-input">
                                     <label for="creditos" class="form-check-label">5c</label>
                                 </div>
-                                <div class="p-2">
+                                <div class="px-2">
                                     <input type="radio" value="6" name="creditos" class="form-check-input">
                                     <label for="creditos" class="form-check-label">6c</label>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-md-6 col-sm-6 col-lg-12 m-2" style="margin-bottom: 20px;">
+                        <div class="col-md-6 col-sm-6 col-lg-12 my-4" style="margin-bottom: 20px;">
                             <label class="form-label" for=""><i class="fas fa-trophy"></i>
                                 <b>Menção Obtida:</b>
                             </label>
@@ -157,7 +137,7 @@
                             </div>
                         </div>
 
-                        <div class="col-12 m-2">
+                        <div class="col-12 my-4">
                             <button id="add-materia" class="btn w-100 btn-primary">
                                 <i class="fas fa-plus"></i>
                                 Adicionar Matéria
@@ -176,12 +156,12 @@
                     <img id="icon" src="SVG/feliz.svg">
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-6 col-md-12 bg-light m-sm-4 m-md-4 m-lg-0 shadow rounded">
+            <div class="col-sm-12 col-lg-6 col-md-12 bg-light shadow rounded">
                 <div id="semestrePanel" class="d-flex">
                     <button id="anterior-semestre" class="btn btn-primary col-2">
                         <i class="fas fa-chevron-left"></i> Anterior
                     </button>
-                    <h4 id="semestrePanelView" class="col-8 rounded p-2 text-center">Semestre X</h4>
+                    <h4 id="semestrePanelView" class="col-8 rounded p-2 mt-2 text-center">Semestre X</h4>
                     <button id="proximo-semestre" class="btn btn-primary col-2">
                         Próximo <i class="fas fa-chevron-right"></i>
                     </button>
