@@ -58,7 +58,7 @@ header div{
 
 #semestres li{
     opacity: .5;
-    border-radius: 20px;
+    border-radius: 8px;
     display: grid;
     transition: .5s;
 }

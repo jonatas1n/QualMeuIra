@@ -10,7 +10,8 @@ gui = {
         li.classList.add('bg-light')
         li.classList.add('shadow')
         li.classList.add('px-3')
-        li.classList.add('py-2')
+        li.classList.add('pt-3')
+        li.classList.add('pb-2')
         li.classList.add('my-1')
 
         div.classList.add('row')
@@ -60,11 +61,11 @@ gui = {
         h4.innerHTML = el.nome
         
         var p1 = document.createElement('h5')
-        p1.classList.add('col-5')
+        p1.classList.add('col-6')
         p1.innerHTML = `<h5><i class="fas fa-coins"></i> Créditos: <b>${el.creditos}</b></h5>`
         
         var p2 = document.createElement('h5')
-        p2.classList.add('col-5')
+        p2.classList.add('col-6')
         if(['SS', 'MS', 'MM'].includes(el.mencao)){
             p2.classList.add('text-success')
         } else {
