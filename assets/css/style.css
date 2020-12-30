@@ -84,6 +84,10 @@ header div{
     border-color: #C54A69 !important;
 }
 
+.text-secondary{
+    color: #C54A69 !important;
+}
+
 #sobre {
     opacity: .4;
     position: fixed;

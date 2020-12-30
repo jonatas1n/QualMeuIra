@@ -58,6 +58,14 @@ calculadoraIRA = {
                 }
             }
         } )
+    },
+
+    cleanAll(){
+        this.semestres = []
+        this.valX = 0
+        this.valY = 0
+        this.semestreID = 0
+        this.materiaID = 0
     }
 
 }

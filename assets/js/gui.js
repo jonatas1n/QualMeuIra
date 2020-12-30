@@ -9,7 +9,8 @@ gui = {
 
         li.classList.add('bg-light')
         li.classList.add('shadow')
-        li.classList.add('p-3')
+        li.classList.add('px-3')
+        li.classList.add('py-2')
         li.classList.add('my-1')
 
         div.classList.add('row')
@@ -17,7 +18,6 @@ gui = {
         dados.classList.add('d-flex')
         dados.classList.add('col-8')
         dados.classList.add('row')
-        dados.style.gap = '20px'
 
         options.classList.add('col-4')
         options.classList.add('options')
@@ -65,6 +65,11 @@ gui = {
         
         var p2 = document.createElement('h5')
         p2.classList.add('col-5')
+        if(['SS', 'MS', 'MM'].includes(el.mencao)){
+            p2.classList.add('text-success')
+        } else {
+            p2.classList.add('text-danger')
+        }
         p2.innerHTML = `<h5><i class="fas fa-trophy"></i> Menção: <b>${el.mencao}</b></h5>`
         
         dados.appendChild(h4)

@@ -1,69 +1,126 @@
+const modal = new bootstrap.Modal(document.getElementById('welcome'))
+const modalEl = document.getElementById('welcome')
+
 const counter = document.getElementById('ira-counter') //Objeto com o contador do IRA
 const icon = document.getElementById('icon')
 const logo = document.getElementById('logo')
-const openModal = document.getElementById('open-modal')
 
 const loginArea = document.getElementById('login')
 
 const templateMateria = document.getElementById('tpl-materia')
 
-const addMateriaBtn = document.getElementById('add-materia') 
-const nomeEl = document.getElementById('name-materia') 
-const creditosEl = document.getElementsByName('creditos') 
-const mencaoEl = document.getElementsByName('mencoes') 
+const addMateriaBtn = document.getElementById('add-materia')
+const nomeEl = document.getElementById('name-materia')
+const creditosEl = document.getElementsByName('creditos')
+const mencaoEl = document.getElementsByName('mencoes')
 
-const semestresArea = document.getElementById('semestres') 
+const semestresArea = document.getElementById('semestres')
 const semestrePanelView = document.getElementById('semestrePanelView')
 
 const proximoSemestreEl = document.getElementById('proximo-semestre')
 const anteriorSemestreEl = document.getElementById('anterior-semestre')
+
+const cookieObj = {}
 
 const state = {
     semestre: 0,
     apaga: false
 }
 
-function alteraApaga(){
+function alteraApaga() {
     state.apaga = !state.apaga
 }
 
-function proximoSemestre(){
-    if (state.semestre == calculadoraIRA.semestres.length - 1){
+function readCookie() {
+    var cookies = document.cookie.split(';')
+
+    cookies = cookies.map(elem => elem.split('='))
+    cookies.forEach(function (elem) {
+        var list = elem[1].split('/')
+        list = list.filter(elem => elem.length > 0)
+        list = list.map(elem => elem.trim().split('|'))
+        cookieObj[elem[0].trim()] = list
+    })
+
+    cookieObj['size'] = parseInt(cookieObj['size'][0])
+
+    for (let i = 0; i < cookieObj['size']; i++) {
+        calculadoraIRA.newSemestre()
+        var dados = (cookieObj['s' + i])
+        console.log(dados)
+        if (dados) {
+            dados.forEach(elem => {
+                console.log(elem)
+                calculadoraIRA.addMateria(elem[0], elem[1], elem[2], i)
+            })
+        }
+    }
+
+    updateSemestre()
+}
+
+function proximoSemestre() {
+    if (state.semestre == calculadoraIRA.semestres.length - 1) {
         calculadoraIRA.newSemestre()
     }
 
     state.semestre++
-    
+
     updateSemestre()
 }
 
-function anteriorSemestre(){
-    if(state.semestre > 0){
+function anteriorSemestre() {
+    if (state.semestre > 0) {
         state.semestre--
         updateSemestre()
     }
 }
 
-function setIRA(){ // Função chamada para calcular o IRA e exibi-lo
+function setIRA() { // Função chamada para calcular o IRA e exibi-lo
     let ira = calculadoraIRA.ira()
     ira = ira.toFixed(4)
     counter.innerHTML = `<b>IRA: ${ira}</b>`
+
+    if(ira < 5){
+        if(ira > 3){
+            counter.classList.add('bg-sucess')
+            counter.classList.remove('bg-danger')
+            counter.classList.remove('bg-secondary')
+        } else {
+            counter.classList.add('bg-danger')
+            counter.classList.remove('bg-sucess')
+            counter.classList.remove('bg-secondary')
+        }
+    }
 }
 
-function updateSemestre(){
+function cleanAll(){
+    resultado = window.confirm('Você tem certeza que deseja limpar tudo?\n Você também excluirá os registros de matérias salvas na sua máquina')
+    if(resultado){
+        calculadoraIRA.cleanAll()
+        updateSemestre()
+    }
+}
+
+function updateSemestre() {
     var semestre = calculadoraIRA.semestres[state.semestre]
 
     semestrePanelView.innerHTML = `Semestre ${state.semestre + 1}`
 
     semestresArea.innerHTML = ''
-    
-    //Implementar template nessa fase
+
+    var cookie = ''
+
     semestre.materias.forEach(el => {
         gui.materia(el)
+        cookie += `${el.nome}|${el.creditos}|${el.mencao}|${el.id}/`
     })
+
+    document.cookie = `s${state.semestre}=${cookie}`
+    document.cookie = `size=${calculadoraIRA.semestres.length}`
 }
 
-function showHeader(){
+function showHeader() {
     logo.style.top = '10px'
     logo.style.transform = 'rotate(-8deg)'
     counter.style.opacity = '1'
@@ -72,18 +129,18 @@ function showHeader(){
 addMateriaBtn.addEventListener('click', () => {
     var nome = nomeEl.value
 
-    var mencao = Array.prototype.slice.call( mencaoEl, 0 );
+    var mencao = Array.prototype.slice.call(mencaoEl, 0);
     mencao = mencao.filter(elem => elem.checked)
     mencaoVal = mencao[0].id
 
-    var creditos = Array.prototype.slice.call( creditosEl, 0 );
+    var creditos = Array.prototype.slice.call(creditosEl, 0);
     creditos = creditos.filter(elem => elem.checked)
     creditosVal = creditos[0].value
 
     calculadoraIRA.addMateria(nome, creditosVal, mencaoVal, state.semestre);
     calculadoraIRA.calculaIRA();
 
-    if(state.apaga) {
+    if (state.apaga) {
         nomeEl.value = ''
         mencao[0].checked = false
         creditos[0].checked = false
@@ -93,12 +150,16 @@ addMateriaBtn.addEventListener('click', () => {
     updateSemestre()
 })
 
-calculadoraIRA.newSemestre()
-setIRA();
-updateSemestre()
-window.onload = function(){
-    openModal.click()
-}
+modalEl.addEventListener('hide.bs.modal', showHeader)
+
 
 proximoSemestreEl.addEventListener('click', proximoSemestre)
 anteriorSemestreEl.addEventListener('click', anteriorSemestre)
+
+calculadoraIRA.newSemestre()
+readCookie()
+calculadoraIRA.calculaIRA()
+setIRA();
+window.onload = function () {
+    modal.show()
+}
