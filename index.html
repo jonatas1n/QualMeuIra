@@ -16,46 +16,94 @@
 
     <script src="https://kit.fontawesome.com/636775e1e6.js" crossorigin="anonymous"></script>
     <script src="app.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="modal fade" id="welcome" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
+    <button type="button" id="open-modal" class="btn d-none btn-primary" data-bs-toggle="modal"
+        data-bs-target="#welcome"></button>
+
+    <div class="modal fade" id="welcome" tabindex="-1" aria-labelledby="welcome" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content p-5">
-                <div class="modal-body row text-center">
-                    <h1>Bem vindo à Calculadora de IRA</h1>
-                    <h5 class="col-8 offset-2 p-3"><i>Desenvolvi essa calculadora Lorem ipsum dolor sit amet
-                            consectetur, adipisicing elit. Delectus magni tenetur veniam ut repellendus sapiente
-                            provident aspernatur atque ab. Distinctio?</i></h5>
+                <div class="modal-header text-center">
+                    <img src="SVG/Logo.svg" id="logo-modal">
+                </div>
+                <div class="modal-body row text-left">
+                    <img src="SVG/feliz.svg" alt="" class="col-4">
+                    <div class="col-7 p-3 m-3">
+                        <h1>Este é o <i>Qual Meu IRA?</i></h1>
+                        <h5>Para facilitar a vida dos estudantes da Universidade de Brasília, desenvolvi esse site que
+                            realiza
+                            previsões do IRA (Índice de Rendimento Acadêmico) em situações como a espera pelo
+                            processamento do sistema.
+                            <br>
+                            <br>
+                            Vale lembrar que esta aplicação <b>sempre estará em estágio beta</b> e que ela não tem
+                            validade como documento.
+                            <br>
+                            <br>
+                            <div style="width: fit-content; background-color: rgba(197, 74, 105, 0.1);" class="p-4 rounded border">
+                                <small>
+                                    <i>Espero que gostem e façam bom proveito!</i> <i class="fas fa-hand-peace"></i>
+                                    <br>
+                                    <a style="text-decoration: none;" href="github.com/jonatas1n"> - Jônatas G. Barbosa da Silva</a>
+                                </small>
+                            </div>
+                        </h5>
+                    </div>
                     <button type="button" class="btn btn-primary col-6 offset-3"
-                        data-bs-dismiss="modal">Começar!</button>
+                        data-bs-dismiss="modal"><b>Qual é o meu IRA?</b></button>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <header class="bg-dark row m-0">
-        <div class="col-6">
-            <h1 class="p-2" style="color: white;">Calculadora de IRA</h1>
+    <div class="modal fade" id="formula" tabindex="-1" aria-labelledby="formula" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content p-5">
+                <div class="modal-body">
+                    <div class="">
+                        <h1>Como é feito cálculo do IRA?</h1>
+                        <h5>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Doloremque quibusdam cumque, a nisi asperiores omnis dolorem harum
+                            laboriosam quasi et ipsum qui perferendis rem maiores!
+                        </h5>
+                        <br>
+                    </div>
+                    <button type="button" class="btn btn-primary col-8 offset-2"
+                        data-bs-dismiss="modal"><h4>Agora, eu entendi! Agora eu saquei!</h4> <i class="fas fa-laugh-squint"></i></button>
+                </div>
+            </div>
         </div>
-        <h2 class="p-2 border col-4 offset-2 text-center bg-success" id="ira-counter">IRA: 5.0</h2>
+    </div>
+
+    <header class="row m-0">
+        <div class="col-4">
+            <img src="SVG/Logo.svg" alt="logo" id="logo" class="p-2">
+        </div>
+        <button type="button" data-bs-toggle="modal" style="margin-top: 18px;" data-bs-target="#formula" class="btn btn-primary col-2 h-75">Como se calcula o IRA?</button>
+        <h2 class="p-2 border col-4 offset-2 text-center" id="ira-counter">IRA: 5.0</h2>
     </header>
-    <main class="container-fluid p-4">
+    <main class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-lg-6 col-md-12">
                 <div class="card shadow p-3">
-                    <div class="card-body row" style="margin: auto">
+                    <div class="card-body w-100">
                         <div class="col-12 m-2">
-                            <label class="form-label" for="">
+                            <label class="form-label" for="nome-materia">
                                 <i class="fas fa-signature"></i>
                                 <b>Nome da Matéria</b></label>
-                            <input id="nome-materia" class="form-control w-100" type="text" placeholder="Opcional">
+                            <input id="nome-materia" class="form-control w-100" type="text">
                         </div>
 
                         <div class="col-md-6 col-sm-6 col-lg-12 m-2">
-                            <label class="form-label" for=""><i class="fas fa-coins"></i> <b>Créditos da disciplina:
-                                </b></label>
+                            <label class="form-label" for="creditos">
+                                <i class="fas fa-coins"></i> <b>Créditos da disciplina:</b>
+                            </label>
                             <div class="d-flex">
                                 <div class="p-2">
                                     <input type="radio" value="1" name="creditos" class="form-check-input">
@@ -85,8 +133,9 @@
                         </div>
 
                         <div class="col-md-6 col-sm-6 col-lg-12 m-2" style="margin-bottom: 20px;">
-                            <label class="form-label" for=""><i class="fas fa-trophy"></i> <b>Menção Obtida:
-                                </b></label>
+                            <label class="form-label" for=""><i class="fas fa-trophy"></i>
+                                <b>Menção Obtida:</b>
+                            </label>
                             <div class="d-flex" style="gap: 20px;">
                                 <input type="radio" name="mencoes" id="SR" class="btn-check">
                                 <label for="SR" class="fw-bold btn btn-outline-secondary">SR</label>
@@ -107,23 +156,38 @@
                                 <label for="SS" class="fw-bold btn btn-outline-success bold">SS</label>
                             </div>
                         </div>
+
                         <div class="col-12 m-2">
-                            <button id="add-materia" class="btn w-100 btn-primary"><i class="fas fa-plus"></i>
-                                Adicionar
-                                Matéria</button>
+                            <button id="add-materia" class="btn w-100 btn-primary">
+                                <i class="fas fa-plus"></i>
+                                Adicionar Matéria
+                            </button>
+                            <div class="m-3">
+                                <input onchange="state.apaga = !state.apaga; console.log('apaga: ', state.apaga);"
+                                    class="form-check-input" id="apaga-itens" type="checkbox">
+                                <label class="form-label" for="apaga-itens">
+                                    Apagar dados após adicionar matéria
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-12 d-none text-center">
+                    <img id="icon" src="SVG/feliz.svg">
+                </div>
             </div>
-            <div class="col-sm-12 col-lg-6 col-md-12 bg-light m-sm-4 m-md-4 m-lg-0">
-                <div id="semestrePanel" class="row d-flex">
-                    <button id="anterior-semestre" class="btn btn-primary col-2">Anterior <i class="fas fa-chevron-left"></i></button>
+            <div class="col-sm-12 col-lg-6 col-md-12 bg-light m-sm-4 m-md-4 m-lg-0 shadow rounded">
+                <div id="semestrePanel" class="d-flex">
+                    <button id="anterior-semestre" class="btn btn-primary col-2">
+                        <i class="fas fa-chevron-left"></i> Anterior
+                    </button>
                     <h4 id="semestrePanelView" class="col-8 rounded p-2 text-center">Semestre X</h4>
-                    <button id="proximo-semestre" class="btn btn-primary col-2">Próximo <i class="fas fa-chevron-right"></i></button>
+                    <button id="proximo-semestre" class="btn btn-primary col-2">
+                        Próximo <i class="fas fa-chevron-right"></i>
+                    </button>
                     <hr>
                 </div>
                 <ul class="bg-light" id="semestres">
-
                 </ul>
             </div>
         </div>

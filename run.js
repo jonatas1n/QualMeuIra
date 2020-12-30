@@ -1,17 +1,26 @@
 var counter = document.getElementById('ira-counter') //Objeto com o contador do IRA
-var addMateriaBtn = document.getElementById('add-materia') //Botão para adicionar matéria ao semestre
-var nomeEl = document.getElementById('nome-materia') //Elemento com o input do nome da matéria
-var creditosEl = document.getElementsByName('creditos') //Elemento com o input dos créditos da matéria
-var mencaoEl = document.getElementsByName('mencoes') //Elemento com o input da menção da matéria
+var icon = document.getElementById('icon')
+var logo = document.getElementById('logo')
+var openModal = document.getElementById('open-modal')
 
-var semestresArea = document.getElementById('semestres') //Área onde serão adicionados as matérias
+var addMateriaBtn = document.getElementById('add-materia') 
+var nomeEl = document.getElementById('nome-materia') 
+var creditosEl = document.getElementsByName('creditos') 
+var mencaoEl = document.getElementsByName('mencoes') 
+
+var semestresArea = document.getElementById('semestres') 
 var semestrePanelView = document.getElementById('semestrePanelView')
 
 var proximoSemestreEl = document.getElementById('proximo-semestre')
 var anteriorSemestreEl = document.getElementById('anterior-semestre')
 
 const state = {
-    semestre: 0
+    semestre: 0,
+    apaga: false
+}
+
+function alteraApaga(){
+    state.apaga = !state.apaga
 }
 
 function proximoSemestre(){
@@ -34,18 +43,17 @@ function setIRA(){ // Função chamada para calcular o IRA e exibi-lo
     let ira = calculadoraIRA.ira()
     counter.innerHTML = `IRA: ${ira}`
 
-    if(ira < 3){
-        counter.classList.remove('bg-success')
-        counter.classList.add('bg-danger')
-    } else {
-        counter.classList.add('bg-success')
-        counter.classList.remove('bg-danger')
-    }
+    // if(ira < 3){
+    //     counter.classList.remove('bg-success')
+    //     counter.classList.add('bg-danger')
+    // } else {
+    //     counter.classList.add('bg-success')
+    //     counter.classList.remove('bg-danger')
+    // }
 }
 
 function updateSemestre(){
     var semestre = calculadoraIRA.semestres[state.semestre]
-    console.log(semestre)
 
     semestrePanelView.innerHTML = `Semestre ${state.semestre + 1}`
 
@@ -71,10 +79,7 @@ function updateSemestre(){
         dados.style.gap = '20px'
 
         options.classList.add('col-4')
-        options.style.justifyContent = 'space-around'
-        options.style.placeItems = 'center'
-        options.style.display = 'grid'
-        options.style.gridTemplateColumns = 'auto auto'
+        options.classList.add('options')
 
         editBtn.classList.add('btn')
         editBtn.classList.add('btn-outline-dark')
@@ -130,6 +135,11 @@ function updateSemestre(){
         div.appendChild(options)
         li.appendChild(div)
 
+        // Animação
+        setTimeout(function() {
+            li.style.opacity = 1
+        }, 250)
+
         semestresArea.appendChild(li)
     } )
 }
@@ -149,6 +159,12 @@ addMateriaBtn.addEventListener('click', () => {
     calculadoraIRA.addMateria(nome, creditosVal, mencaoVal, state.semestre);
     calculadoraIRA.calculaIRA();
 
+    if(state.apaga) {
+        nomeEl.value = ''
+        mencao[0].checked = false
+        creditos[0].checked = false
+    }
+
     setIRA()
     updateSemestre()
 })
@@ -156,6 +172,12 @@ addMateriaBtn.addEventListener('click', () => {
 calculadoraIRA.newSemestre()
 setIRA();
 updateSemestre()
+icon.style.left = '0'
+logo.style.top = '10px'
+logo.style.transform = 'rotate(-8deg)'
+window.onload = function(){
+    openModal.click()
+}
 
 proximoSemestreEl.addEventListener('click', function() {proximoSemestre()})
 anteriorSemestreEl.addEventListener('click', function() {anteriorSemestre()})

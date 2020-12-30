@@ -2,10 +2,46 @@
     color: white;
     border-bottom-left-radius: 20px;
     border: none !important;
+    background-color: #C54A69;
 }
 
 main, html, header {
     background-color: #dedede;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+header {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 800;
+    background-color: #0E131F;
+}
+
+main {
+    padding: 45px 20px 20px 20px!important;
+}
+
+#logo-modal{
+    width: fit-content;
+    margin: auto;
+}
+
+#icon {
+    width: 20em;
+    position: relative;
+    left: -100%;
+    height: auto;
+    transition: 1s;
+}
+
+#logo {
+    width: 180px;
+    position: relative;
+    height: auto;
+    margin: -15px 0;
+    top: -120%;
+    left: 20px;
+    transition: 1s;
+    transform: rotate(12deg);
 }
 
 header div{
@@ -18,7 +54,28 @@ header div{
 }
 
 #semestres li{
-    margin-top: 15px;
+    opacity: .5;
     border-radius: 20px;
     display: grid;
+    transition: .5s;
+}
+
+#semestres li:not(:first-child){
+    margin-top: 15px;
+}
+
+.options { 
+    justify-content: space-around;
+    display: grid;
+    grid-template-columns: auto auto;
+    place-items: center;
+}
+
+.btn-primary{
+    background-color: #38405F !important;
+    border-color: #38405F !important;
+}
+
+#semestrePanelView {
+    margin-top: 15px;
 }
