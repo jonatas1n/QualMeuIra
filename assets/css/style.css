@@ -35,11 +35,12 @@ main {
 }
 
 #logo-modal {
-    -o-object-fit: contain !important;
+    /* -o-object-fit: contain !important;
     object-fit: contain !important;
     width: -webkit-fit-content;
     width: -moz-fit-content;
-    width: fit-content;
+    width: fit-content; */
+    width: 45%;
     margin: auto;
 }
 
