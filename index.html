@@ -32,7 +32,7 @@
                     <img src="SVG/Logo.svg" id="logo-modal">
                 </div>
                 <div class="modal-body row text-left">
-                    <img src="SVG/feliz.svg" alt="" class="col-4">
+                    <img src="SVG/feliz.svg" alt="" class="col-lg-4 col-8 offset-lg-0 offset-2">
                     <div class="col-lg-7 col-12 p-3 m-3">
                         <h1>Este é o <i>Qual Meu IRA?</i></h1>
                         <h5>Para facilitar a vida dos estudantes da Universidade de Brasília, desenvolvi esse site que
@@ -66,46 +66,22 @@
     </div>
 
     <header class="row m-0">
-        <div class="col-4">
+        <div class="col-lg-2 col-md-3 col-sm-3">
             <img src="SVG/Logo.svg" alt="logo" id="logo" class="shadow p-2 bg-light">
         </div>
-        <!-- <button type="button" data-bs-toggle="modal" style="margin-top: 18px;" data-bs-target="#formula" class="btn btn-primary col-2 h-75">Como se calcula o IRA?</button> -->
-        <h2 class="p-2 border col-4 offset-4 text-center" id="ira-counter">IRA: 5.0</h2>
+        <h2 class="p-2 border col-lg-2 offset-lg-8 col-md-3 offset-md-6 col-sm-4 offset-sm-5 text-center" id="ira-counter">IRA: 5.0</h2>
     </header>
+
     <main class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-lg-6 col-md-12 mb-lg-0 mb-md-4 mb-sm-4">
-                <div id="login" class="card shadow p-3 mb-3">
-                    <div class="card-body">
-                        <div style="display: grid; grid-template-columns: 2fr 1fr; place-items: center">
-                            <div>
-                                <h2 class="mb-2">Você não está logado.</h2>
-                                <h4 class="mb-3">
-                                    Você pode guardar seus dados e fazer consultas de qualquer dispositivo,
-                                    quantas vezes quiser!
-                                    <i class="fas fa-smile-beam"></i>
-                                </h4>
-                            </div>
-                            <button class="btn btn-lg btn-secondary"><i class="fas fa-pen"></i> Fazer Cadastro</button>
-                        </div>
-                        <hr>
-                        <div class="d-flex" style="justify-content: space-between;">
-                            <div class="d-flex" style="place-items: center; gap: 15px;">
-                                <h5><i>Já tem cadastro?</i></h5>
-                                <button class="btn btn-secondary"><i class="fas fa-sign-in-alt"></i> Login</button>
-                            </div>
-                            <button onclick="hideLogin()" class="btn btn-dark"><i class="fas fa-times"></i> Ignorar</button>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="card shadow p-3">
                     <div class="card-body w-100">
                         <div class="col-12 my-4">
-                            <label class="form-label" for="nome-materia">
+                            <label class="form-label" for="name-materia">
                                 <i class="fas fa-signature"></i>
                                 <b>Nome da Matéria</b></label>
-                            <input id="nome-materia" class="form-control w-100" type="text">
+                            <input id="name-materia" class="form-control w-100" type="text">
                         </div>
 
                         <div class="col-md-12 col-sm-12 col-lg-6 my-4">
@@ -141,26 +117,27 @@
                         </div>
 
                         <div class="col-md-12 col-sm-12 col-lg-6 my-4" style="overflow-x: auto; margin-bottom: 20px;">
-                            <label class="form-label" for=""><i class="fas fa-trophy"></i>
-                                <b>Menção Obtida:</b>
+                            <label class="form-label d-flex" for="mencoes"><i class="fas fa-trophy"></i>
+                                <b>Menção Obtida:</b> 
+                                <i class="fas fa-question-circle"></i>
                             </label>
-                            <div class="d-flex" style="gap: 15px;">
-                                <input type="radio" name="mencoes" id="SR" class="btn-check">
+                            <div id="mencoes" class="d-flex gap-2">
+                                <input type="radio" name="mencoes" value="SR" id="SR" class="btn-check">
                                 <label for="SR" class="fw-bold btn btn-outline-secondary">SR</label>
 
-                                <input type="radio" name="mencoes" id="II" class="btn-check">
+                                <input type="radio" name="mencoes" value="II" id="II" class="btn-check">
                                 <label for="II" class="fw-bold btn btn-outline-danger">II</label>
 
-                                <input type="radio" name="mencoes" id="MI" class="btn-check">
+                                <input type="radio" name="mencoes" value="MI" id="MI" class="btn-check">
                                 <label for="MI" class="fw-bold btn btn-outline-danger">MI</label>
 
-                                <input type="radio" name="mencoes" id="MM" class="btn-check">
+                                <input type="radio" name="mencoes" value="MM" id="MM" class="btn-check">
                                 <label for="MM" class="fw-bold btn btn-outline-success">MM</label>
 
-                                <input type="radio" name="mencoes" id="MS" class="btn-check">
+                                <input type="radio" name="mencoes" value="MS" id="MS" class="btn-check">
                                 <label for="MS" class="fw-bold btn btn-outline-success">MS</label>
 
-                                <input type="radio" name="mencoes" id="SS" class="btn-check">
+                                <input type="radio" name="mencoes" value="SS" id="SS" class="btn-check">
                                 <label for="SS" class="fw-bold btn btn-outline-success bold">SS</label>
                             </div>
                         </div>
@@ -181,7 +158,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-6 col-md-12 my-4 my-lg-0">
+
+            <div class="col-sm-12 col-lg-6 col-md-12 my-md-1 my-lg-0 h-100 border">
                 <div id="semestrePanel" class="d-flex bg-light shadow rounded border">
                     <button id="anterior-semestre" class="btn btn-primary col-3">
                         Anterior
@@ -195,18 +173,18 @@
                         <i class="fas fa-angle-double-right"></i>
                     </button>
                 </div>
-                <ul class="bg-light h-100" id="semestres">
-                </ul>
+                <ul class="h-100 rounded-bottom" id="semestres"></ul>
             </div>
         </div>
-        <div id="sobre" class="d-flex mb-3 mx-3" style="place-items: center; gap: 15px">
+        <div id="sobre" class="m-4" style="place-items: center; gap: 15px">
             <img id="universidade" src="SVG/unb.svg" alt="">
-            <a href="www.github.com/jonatas1n">Aplicação desenvolvida por Jônatas Gomes</a>
+            <a href="www.github.com/jonatas1n">Aplicação desenvolvida por <b>Jônatas Gomes</b></a>
         </div>
     </main>
 
 
 </body>
 <script src="run.js"></script>
+<script src="gui.js"></script>
 
 </html>
