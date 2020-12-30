@@ -1,10 +1,4 @@
-<div style="text-align: center">
-</div>
-    <img src="assets/img/Logo.svg" style="width: fit-content; margin: auto;">
-
-<div style="display: grid; grid-template-columns: auto auto; gap: 15px; place-items: center">
-    <img src="assets/img/feliz.svg" style="width: 100%;">
-<div>
+<img src="assets/img/Logo.svg" width="50%">
     
 # Qual meu IRA? | UnB
 Uma das métricas mais importantes do desempenho do estudante universitário é o IRA, Índice de Rendimento Acadêmico. Esse índice é útil para a auto-análise do discente, mas também serve como parâmetro de admissão em vários projetos no ambiente acadêmico.
