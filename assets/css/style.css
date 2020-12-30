@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 #ira-counter {
     color: white;
     border-bottom-left-radius: 20px;
@@ -9,6 +16,8 @@
 main, html, header {
     background-color: #dedede;
     font-family: 'Nunito Sans', sans-serif;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s;
 }
 
@@ -16,6 +25,8 @@ header {
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 800;
     background-color: #0E131F;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
     transition: 1s;
 }
 
@@ -23,9 +34,9 @@ main {
     padding: 45px 20px 20px 20px!important;
 }
 
-#logo-modal{
+#logo-modal {
+    -o-object-fit: contain !important;
     object-fit: contain !important;
-    width: 45%;
     margin: auto;
 }
 
@@ -34,6 +45,8 @@ main {
     position: relative;
     left: -100%;
     height: auto;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
     transition: 1s;
 }
 
@@ -44,48 +57,58 @@ main {
     margin: -15px 0;
     top: -145%;
     left: 20px;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
     transition: 1s;
+    -webkit-transform: rotate(12deg);
+    -ms-transform: rotate(12deg);
     transform: rotate(12deg);
 }
 
-header div{
+header div {
     border-bottom-right-radius: 20px;
 }
 
-#semestres{
+#semestres {
     list-style: none;
     padding: 0;
 }
 
-#semestres li{
+#semestres li {
     opacity: .5;
     border-radius: 8px;
+    display: -ms-grid;
     display: grid;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s;
 }
 
-#semestres li:not(:first-child){
+#semestres li:not(:first-child) {
     margin-top: 15px;
 }
 
-.options { 
+.options {
+    -ms-flex-pack: distribute;
     justify-content: space-around;
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: auto auto;
     grid-template-columns: auto auto;
     place-items: center;
 }
 
-.btn-primary{
+.btn-primary {
     background-color: #38405F !important;
     border-color: #38405F !important;
 }
 
-.btn-secondary{
+.btn-secondary {
     background-color: #C54A69 !important;
     border-color: #C54A69 !important;
 }
 
-.text-secondary{
+.text-secondary {
     color: #C54A69 !important;
 }
 
@@ -101,7 +124,7 @@ header div{
     width: 100px;
 }
 
-#sobre a{
+#sobre a {
     text-decoration: none;
     color: black;
 }
