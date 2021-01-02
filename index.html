@@ -4,24 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qual meu IRA | UnB</title>
+    <title>Qual Meu IRA | UnB</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- CSS only -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
 
     <script src="https://kit.fontawesome.com/636775e1e6.js" crossorigin="anonymous"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="assets/js/ira.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <template id="sem-tpl">
+        <div class="col-3 col-md-2 d-flex mb-3 gap-2">
+            <label for="" class="form-label"></label>
+            <input onchange="previsao.calcula()" type="text" class="form-control previsao-field w-75">
+        </div>
+    </template>
+
     <div class="modal fade" id="welcome" tabindex="-1" aria-labelledby="welcome" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
             <div class="modal-content p-5">
@@ -75,23 +81,45 @@
     <main class="container-fluid">
         <div class="row">
             <div class="col-12 col-lg-6 mb-lg-0 mb-4">
-                <div class="card shadow p-3">
-                    <div id="form-materia" class="card-body w-100">
-                        <div id="historico-area" class="col-12 rounded my-4 p-2">
-                            <input type="checkbox" id="historico" onclick="historico()" class="form-check-input">
-                            <label for="" class="form-check-label"><b>Calcular a partir de IRA</b></label>
-                            <div id="historico-form" class="mt-3 d-flex d-none pt-2 px-3 gap-2 rounded">
-                                <div class="my-2 col-3">
-                                    <label for="" class="form-label"><i class="fas fa-calculator"></i> IRA:</label>
-                                    <input type="text" class="form-control">
+
+                <div class="card shadow p-3 pb-0 mb-2">
+                    <div class="card-body p-0">
+                        <div class="d-flex gap-2 row p-2">
+                            <div class="col-lg-3 col-12">
+                                <div class="d-flex">
+                                    <input type="checkbox" id="previsao-check" value="0" checked="false" onclick="previsao.changeState()"
+                                        class="form-check-input">
+                                    <label for="previsao" class="d-flex gap-1 ps-2">
+                                        <i class="fas fa-binoculars"></i>
+                                        <h5>Previsão de IRA</h5>
+                                    </label>
                                 </div>
-                                <div class="my-2 col-3">
-                                    <label for="" class="form-label"><i class="fas fa-calendar"></i> Semestres
-                                        Cursados:</label>
-                                    <input type="text" class="form-control">
+                                <div id="previsao-form" class="d-none gap-2 mb-3">
+                                    <div class="pb-2">
+                                        <label for="" class="form-label">
+                                            <i class="fas fa-calculator"></i> IRA Atual:
+                                        </label>
+                                        <input type="text" id="previsao-ira" class="form-control">
+                                    </div>
+                                    <hr>
                                 </div>
                             </div>
+                            <div class="col-lg-8 col-12 mb-3 p-0">
+                                <div class="form-text mb-2">
+                                    Digite a soma dos créditos das disciplinas matriculadas de
+                                    cada semestre, e preveja seu IRA.
+                                </div>
+                                <div id="previsao-creditos" class="row p-1 d-flex"></div>
+                                <button id="previsao-btn" class="btn btn-secondary d-none w-100">
+                                    <i class="fas fa-plus"></i> Adicionar Semestre
+                                </button>
+                            </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="card shadow p-3">
+                    <div id="form-materia" class="card-body w-100">
                         <div class="col-12 my-4">
                             <label class="form-label" for="name-materia">
                                 <i class="fas fa-signature"></i>
@@ -162,8 +190,8 @@
                                 Adicionar Matéria
                             </button>
                             <div class="col-12 my-3">
-                                <input onchange="state.apaga = !state.apaga; console.log('apaga: ', state.apaga);"
-                                    class="form-check-input" id="apaga-itens" type="checkbox">
+                                <input onchange="state.alteraApaga();" class="form-check-input"
+                                id="apaga-itens" type="checkbox">
                                 <label class="form-label" for="apaga-itens">
                                     Apagar dados após adicionar matéria
                                 </label>
@@ -175,7 +203,7 @@
 
             <div class="col-12 col-lg-6 my-2 my-lg-0 h-100">
                 <button id="clear-all-btn" onclick="cleanAll()"
-                    class="d-none btn btn-secondary shadow offset-lg-7 col-lg-5 col-12 mb-2 align-items-center">
+                    class="btn btn-secondary shadow offset-lg-7 col-lg-5 col-12 mb-2 align-items-center">
                     <h5 class="m-0">
                         <i class="fas fa-trash"></i> Limpar Tudo
                     </h5>
@@ -204,6 +232,7 @@
 
 
 </body>
+<script src="assets/js/cookie.js"></script>
 <script src="assets/js/gui.js"></script>
 <script src="assets/js/run.js"></script>
 
