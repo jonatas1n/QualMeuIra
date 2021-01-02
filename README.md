@@ -9,9 +9,8 @@ Pensando nessa dificuldade e em formas de resolvê-la, desenvolvi essa aplicaç�
 </div>
 </div>
 
+
+
+    Esta aplicação não tem como objetivo fornecer documentos para comprovação acadêmica ou administrativa.
+
 ---
-
-Esta aplicação não tem como objetivo fornecer documentos para comprovação acadêmica ou administrativa.
-
-
-O IRA é um índice que varia de 0 até 5, em que mede o nível de desempenho do aluno durante o curso. Quanto mais alto o IRA, melhor, porque a oportunidade de matrícula, participação de projetos de pesquisa, eventos, PET, entre outros é prioritária para quem tem o índice mais próximo de 5. Abaixo há um modo elaborado pelo Caeng de saber o IRA.
