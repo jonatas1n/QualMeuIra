@@ -14,3 +14,7 @@ Pensando nessa dificuldade e em formas de resolvê-la, desenvolvi essa aplicaç�
     Esta aplicação não tem como objetivo fornecer documentos para comprovação acadêmica ou administrativa.
 
 ---
+
+Fórmula para o cálculo do IRA:
+
+![IRA](assets/img/formula.png)
