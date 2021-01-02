@@ -116,6 +116,10 @@ header div {
     color: #C54A69 !important;
 }
 
+.bg-pink{
+    background-color: rgba(187, 74, 105, 0.15);
+}
+
 #sobre {
     opacity: .4;
     position: fixed;

@@ -5,79 +5,124 @@ const counter = document.getElementById('ira-counter')
 const icon = document.getElementById('icon')
 const logo = document.getElementById('logo')
 
-const loginArea = document.getElementById('login')
-
 const form = document.getElementById('form-materia')
 
-const templateMateria = document.getElementById('tpl-materia')
-
-const addMateriaBtn = document.getElementById('add-materia')
 const nomeEl = document.getElementById('name-materia')
 const creditosEl = document.getElementsByName('creditos')
 const mencaoEl = document.getElementsByName('mencoes')
+const addMateriaBtn = document.getElementById('add-materia')
 
 const clearAllBtn = document.getElementById('clear-all-btn')
-
 const semestresArea = document.getElementById('semestres')
 const semestrePanelView = document.getElementById('semestrePanelView')
+
+const previsaoTpl = document.getElementById('sem-tpl')
+const previsaoBtn = document.getElementById('previsao-btn')
+const previsaoCreditos = document.getElementById('previsao-creditos')
+const previsaoFields = document.getElementsByClassName('previsao-field')
+const previsaoIra = document.getElementById('previsao-ira')
+const previsaoCheck = document.getElementById('previsao-check')
+const previsaoForm = document.getElementById('previsao-form')
 
 const proximoSemestreEl = document.getElementById('proximo-semestre')
 const anteriorSemestreEl = document.getElementById('anterior-semestre')
 
-const cookieObj = {}
-
 const state = {
     semestre: 0,
-    apaga: false
-}
+    apagaDados: false,
+    previsao: false,
 
-function alteraApaga() {
-    state.apaga = !state.apaga
-}
+    alteraApaga: function () {
+        this.apagaDados = !this.apagaDados
+    },
 
-function readCookie() {
-    if(document.cookie.length > 0){
-    var cookies = document.cookie.split(';')
-
-        cookies = cookies.map(elem => elem.split('='))
-        cookies.forEach(function (elem) {
-            var list = elem[1].split('/')
-            list = list.filter(elem => elem.length > 0)
-            list = list.map(elem => elem.trim().split('|'))
-            cookieObj[elem[0].trim()] = list
-        })
-    
-        cookieObj['size'] = parseInt(cookieObj['size'][0])
-    
-        for (let i = 0; i < cookieObj['size']; i++) {
-            calculadoraIRA.newSemestre()
-            var dados = cookieObj['s' + i]
-    
-            if (dados) {
-                dados.forEach(elem => {
-                    calculadoraIRA.addMateria(elem[0], elem[1], elem[2], i)
-                })
+    position: function(it) {
+        if (it == 1) {
+            if (state.semestre == calculadoraIRA.semestres.length - 1) {
+                calculadoraIRA.newSemestre()
             }
+    
+            state.semestre++
+        } else if (state.semestre) {
+            state.semestre--
         }
     
-        updateSemestre()
+        semestres.update()
     }
 }
 
-function proximoSemestre() {
-    if (state.semestre == calculadoraIRA.semestres.length - 1) {
-        calculadoraIRA.newSemestre()
+const semestres = {
+    update: function(){
+        if (calculadoraIRA.semestres.length == 0) calculadoraIRA.newSemestre()
+
+        var semestre = calculadoraIRA.semestres[state.semestre]
+        semestre.materias = semestre.materias.reverse()
+
+        semestrePanelView.innerHTML = `${state.semestre + 1}º Semestre`
+        semestresArea.innerHTML = ''
+
+        var cookieObj = ''
+
+        semestre.materias.forEach(el => {
+            gui.materia(el)
+            cookieObj += `${el.nome}|${el.creditos}|${el.mencao}|${el.id}/`
+        })
+
+        cookie.createCookie.semestre(cookieObj)
+        setIRA()
+    },
+
+    clear: function() {
+        let resultado = window.confirm('Você tem certeza que deseja limpar tudo?\n Você também excluirá os registros de matérias salvas na sua máquina')
+        if (resultado) {
+            calculadoraIRA.clear()
+            this.update()
+            calculadoraIRA.calculaIRA()
+        }
     }
-
-    state.semestre++
-
-    updateSemestre()
 }
 
-function anteriorSemestre() {
-    if (state.semestre > 0) {
-        state.semestre--
-        updateSemestre()
+const previsao = {
+    createField: function(){
+        var len = previsaoCreditos.children.length
+        if(len <= 17){            
+            var semestre = previsaoTpl.content.cloneNode(true)
+            
+            previsaoCreditos.appendChild(semestre)
+            
+            
+            var label = previsaoCreditos.children[len]
+            label = label.querySelector('label')
+            label.innerHTML = `Sem. ${len + 1}: `
+        }
+    },
+
+    calcula: function(){
+        var fields = Array.prototype.slice.call(previsaoFields, 0)
+        var values = fields.map(elem => elem.value)
+        var ira = previsaoIra.value
+
+        var cookieObj = values.join('|')
+        cookie.createCookie.previsao(cookieObj, ira)
+
+        calculadoraIRA.previsao(ira, values)
+        semestres.update()
+    },
+
+    changeState: function(){
+        previsaoForm.classList.toggle('d-none')
+        previsaoBtn.classList.toggle('d-none')
+        state.previsao = !state.previsao
+        this.createField()
+
+        if(!state.previsao){
+            calculadoraIRA.zeraPrevisao()
+            previsaoCreditos.innerHTML = ''
+            previsaoIra.value = null
+            previsaoCheck.checked = false
+
+            cookie.createCookie.notPrevisao()
+        }
     }
 }
 
@@ -86,61 +131,19 @@ function setIRA() { // Função chamada para calcular o IRA e exibi-lo
     ira = ira.toFixed(4)
     counter.innerHTML = `<b>IRA: ${ira}</b>`
 
-    if(ira < 5){
-        if(ira > 3){
+    if (ira < 5) {
+        if (ira > 3) {
             counter.classList.add('bg-sucess')
             counter.classList.remove('bg-danger')
-            counter.classList.remove('bg-secondary')
         } else {
             counter.classList.add('bg-danger')
             counter.classList.remove('bg-sucess')
-            counter.classList.remove('bg-secondary')
         }
+        counter.classList.remove('bg-secondary')
     }
 }
 
-function cleanAll(){
-    resultado = window.confirm('Você tem certeza que deseja limpar tudo?\n Você também excluirá os registros de matérias salvas na sua máquina')
-    if(resultado){
-        calculadoraIRA.cleanAll()
-        updateSemestre()
-    }
-}
-
-function updateSemestre() {
-    var semestre = calculadoraIRA.semestres[state.semestre]
-    semestre.materias = semestre.materias.reverse()
-
-    semestrePanelView.innerHTML = `Semestre ${state.semestre + 1}`
-
-    semestresArea.innerHTML = ''
-
-    var cookie = ''
-
-    semestre.materias.forEach(el => {
-        gui.materia(el)
-        cookie += `${el.nome}|${el.creditos}|${el.mencao}|${el.id}/`
-    })
-
-    document.cookie = `s${state.semestre}=${cookie}`
-    document.cookie = `size=${calculadoraIRA.semestres.length}`
-
-    setTimeout(function(){
-        if(calculadoraIRA.semestres.length > 0){
-            clearAllBtn.classList.remove('d-none')
-        } else {
-            clearAllBtn.classList.add('d-none')
-        }
-    }, 1000)
-}
-
-function showHeader() {
-    logo.style.top = '10px'
-    logo.style.transform = 'rotate(-8deg)'
-    counter.style.opacity = '1'
-}
-
-addMateriaBtn.addEventListener('click', () => {
+function addMateria(){
     var nome = nomeEl.value
 
     var mencao = Array.prototype.slice.call(mencaoEl, 0);
@@ -160,17 +163,21 @@ addMateriaBtn.addEventListener('click', () => {
         creditos[0].checked = false
     }
 
-    setIRA()
-    updateSemestre()
-})
+    semestres.update()
+}
 
-modalEl.addEventListener('hide.bs.modal', showHeader)
+modalEl.addEventListener('hide.bs.modal', gui.showHeader)
 
-proximoSemestreEl.addEventListener('click', proximoSemestre)
-anteriorSemestreEl.addEventListener('click', anteriorSemestre)
+addMateriaBtn.addEventListener('click', addMateria)
+
+previsaoBtn.addEventListener('click', previsao.createField)
+
+anteriorSemestreEl.addEventListener('click', () => state.position(-1))
+proximoSemestreEl.addEventListener('click', () => state.position(1))
 
 calculadoraIRA.newSemestre()
-readCookie()
+cookie.readCookie()
 calculadoraIRA.calculaIRA()
-setIRA();
-window.onload = modal.show()
+semestres.update()
+// window.onload = modal.show()
+gui.showHeader()
