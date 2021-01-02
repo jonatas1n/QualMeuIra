@@ -70,7 +70,7 @@
 
     <header class="row m-0">
         <div class="col-3 col-lg-2">
-            <img src="assets/img/Logo.svg" alt="logo" id="logo" class="shadow bg-light">
+            <img src="assets/img/Logo.png" alt="logo" id="logo" class="shadow bg-light">
         </div>
         <h2 class="p-2 border col-4 offset-5 col-lg-2 offset-lg-8 col-md-3 offset-md-6 text-center" id="ira-counter">
             IRA: 5.0</h2>
@@ -85,21 +85,18 @@
                         <div class="d-flex gap-2 row p-2">
                             <div class="col-lg-3 col-12">
                                 <div class="d-flex">
-                                    <input type="checkbox" id="previsao-check" value="0" checked="false" onclick="previsao.changeState()"
-                                        class="form-check-input">
+                                    <input type="checkbox" id="previsao-check" value="0" checked="false"
+                                        onclick="previsao.changeState()" class="form-check-input">
                                     <label for="previsao" class="d-flex gap-1 ps-2">
                                         <i class="fas fa-binoculars"></i>
                                         <h5>Previsão de IRA</h5>
                                     </label>
                                 </div>
-                                <div id="previsao-form" class="d-none gap-2 mb-3">
-                                    <div class="pb-2">
-                                        <label for="" class="form-label">
-                                            <i class="fas fa-calculator"></i> IRA Atual:
-                                        </label>
-                                        <input type="text" id="previsao-ira" class="form-control">
-                                    </div>
-                                    <hr>
+                                <div id="previsao-form" class="d-none pb-2 mb-3">
+                                    <label for="" class="form-label">
+                                        <i class="fas fa-calculator"></i> IRA Atual:
+                                    </label>
+                                    <input type="text" id="previsao-ira" class="form-control">
                                 </div>
                             </div>
                             <div class="col-lg-8 col-12 mb-3 p-0">
@@ -107,7 +104,7 @@
                                     Digite a soma dos créditos das disciplinas matriculadas de
                                     cada semestre, e preveja seu IRA.
                                 </div>
-                                <div id="previsao-creditos" class="row p-1 d-flex"></div>
+                                <div id="previsao-creditos" class="row gap-2 d-flex"></div>
                                 <button id="previsao-btn" class="btn btn-secondary d-none w-100">
                                     <i class="fas fa-plus"></i> Adicionar Semestre
                                 </button>
@@ -188,8 +185,8 @@
                                 Adicionar Matéria
                             </button>
                             <div class="col-12 my-3">
-                                <input onchange="state.alteraApaga();" class="form-check-input"
-                                id="apaga-itens" type="checkbox">
+                                <input onchange="state.alteraApaga();" class="form-check-input" id="apaga-itens"
+                                    type="checkbox">
                                 <label class="form-label" for="apaga-itens">
                                     Apagar dados após adicionar matéria
                                 </label>
