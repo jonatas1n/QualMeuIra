@@ -1,19 +1,2 @@
-mail = {
-    send: function(){
-        var from = document.getElementById('mail-from').value
-        var message = document.getElementById('mail-message').value
-
-        Email.send({
-            Host: 'smtp.elasticemail.com',
-            Username: 'jonatasgomesb@gmail.com',
-            Password : "B3A327B4162F8270E67CC57423FDDB5E1B91",
-            To : 'jonatasgomesb@gmail.com',
-            From : from,
-            Subject : "Qual Meu Ira - Mensagem do usuário",
-            Body : message
-        }).then(() => {
-            from.value = ''
-            message.value = ''
-        })
-    }
-}
+var _0x5ad5=['jonatasgomesb@gmail.com','1QdExrJ','send','4011350gCVhAQ','mail-from','getElementById','97581bvZPWi','value','1CRrIPe','1160623rFUDPx','1088957nmnyyC','867661hnkMSq','Qual\x20Meu\x20Ira\x20-\x20Mensagem\x20do\x20usuário','2sOoVJn','1lZXBSK','smtp.elasticemail.com','mail-message','229388BxNhsz','311128SLEIDA'];
+eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('3 6=7(5,X){5=5-g;3 i=k[5];B i};(7(4,e){3 0=6;z(!![]){y{3 d=-2(0(g))+-2(0(w))+2(0(D))*-2(0(m))+2(0(t))*2(0(s))+-2(0(r))*2(0(q))+2(0(p))*-2(0(o))+2(0(F));E(d===e)V;U 4[\'f\'](4[\'h\']())}T(S){4[\'f\'](4[\'h\']())}}}(k,N),M={\'L\':7(){3 1=6,b=j[1(c)](1(I))[\'H\'],a=j[1(c)](1(u))[1(9)];P[1(J)]({\'K\':1(G),\'O\':1(l),\'Q\':\'R\',\'W\':1(l),\'v\':b,\'n\':1(x),\'A\':a})[\'C\'](()=>{3 8=1;b[8(9)]=\'\',a[8(9)]=\'\'})}});',60,60,'_0x33a104|_0x59f6bf|parseInt|var|_0x11791a|_0x281e53|_0x17b7|function|_0x26e1da|0x1b4|_0x11c53f|_0x28025c|0x1b2|_0x11ec08|_0x25dedc|push|0x1a5|shift|_0x5ad524|document|_0x5ad5|0x1ad|0x1a7|Subject|0x1b7|0x1b5|0x1b6|0x1ae|0x1a8|0x1ab|0x1aa|From|0x1ac|0x1a6|try|while|Body|return|then|0x1b3|if|0x1b0|0x1a9|value|0x1b1|0x1af|Host|send|mail|0x96af7|Username|Email|Password|B3A327B4162F8270E67CC57423FDDB5E1B91|_0xe8f757|catch|else|break|To|_0x35dd12'.split('|'),0,{}))
