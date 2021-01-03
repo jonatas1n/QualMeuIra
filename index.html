@@ -65,19 +65,22 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
             <div class="modal-content p-5">
                 <div class="modal-header text-center">
-                    <img src="assets/img/Logo.svg" id="logo-modal">
+                    <img src="assets/img/Logo.png" id="logo-modal">
                 </div>
-                <div class="modal-body row">
-                    <img src="assets/img/feliz.png" alt="" class="col-lg-4 col-8 offset-lg-0 offset-2">
+                <div style="place-items: center" class="modal-body row">
+                    <img style="height: 92%" src="assets/img/feliz.png" alt="" class="img-fluid col-lg-4 col-8 offset-lg-0 offset-2">
                     <div class="col-lg-7 col-12 p-3 m-3">
                         <h1>Este é o <i>Qual Meu IRA?</i></h1>
-                        <h5>Para facilitar a vida dos estudantes da Universidade de Brasília,
-                            desenvolvi esse site que realiza previsões do IRA
-                            (Índice de Rendimento Acadêmico).
-                            <br><br>
-                            Vale lembrar que esta aplicação <b>sempre será beta</b>, e que ela não tem
-                            validade como documento.
-                            <br><br>
+                        <h5 class="gap-1">
+                            <p>Para facilitar a vida dos estudantes da Universidade de Brasília,
+                                desenvolvi esse site que realiza previsões do IRA
+                                (Índice de Rendimento Acadêmico).
+                            </p>
+                            <p>
+                                Vale lembrar que esta aplicação <b>sempre será beta</b>, e que ela não tem
+                                validade como documento.
+                            </p>
+
                             <div style="width: fit-content; background-color: rgba(197, 74, 105, 0.1);"
                                 class="p-4 rounded border">
                                 <small>
@@ -89,8 +92,11 @@
                                 </small>
                             </div>
                             <div class="form-text">
-                                <i>Ah! Qualquer sugestão, crítica ou alerta, é só me mandar um e-mail: <b
-                                        style="color: #0000bb" onclick="copyEmail()"></b>jonatasgomesb@gmail.com</b></i>
+                                <i>Ah! Qualquer sugestão, crítica ou alerta, é só me mandar um e-mail:
+                                    <b style="color: #0000bb" onclick="copyEmail()">
+                                        jonatasgomesb@gmail.com
+                                    </b>
+                                </i>
                                 <p id="message-email" class='d-none' style="color: black">E-mail copiado!</p>
                             </div>
                         </h5>
@@ -107,7 +113,7 @@
 
     <header class="row m-0">
         <div class="col-3 col-lg-2">
-            <img src="assets/img/Logo.png" alt="logo" id="logo" class="shadow bg-light">
+            <img src="assets/img/Logo.png" alt="logo" onclick="modal.show()" id="logo" class="shadow bg-light">
         </div>
         <button data-bs-target="#mail-modal" data-bs-toggle="modal" style="place-items: center;" id="mail-btn"
             class="btn d-flex btn-secondary col-lg-2 offset-lg-1 col-md-3 offset-md-0 col-1 offset-sm-2 offset-3 my-3 gap-2">
@@ -203,22 +209,22 @@
                                 <i class="fas fa-trophy"></i> <b>Menção Obtida:</b>
                             </label>
                             <div id="mencoes" class="d-flex gap-2">
-                                <input type="radio" name="mencoes" value="SR" id="SR" class="btn-check">
+                                <input type="radio" name="mencoes" value="0" id="SR" class="btn-check">
                                 <label for="SR" class="fw-bold btn btn-outline-secondary">SR</label>
 
-                                <input type="radio" name="mencoes" value="II" id="II" class="btn-check">
+                                <input type="radio" name="mencoes" value="1" id="II" class="btn-check">
                                 <label for="II" class="fw-bold btn btn-outline-danger">II</label>
 
-                                <input type="radio" name="mencoes" value="MI" id="MI" class="btn-check">
+                                <input type="radio" name="mencoes" value="2" id="MI" class="btn-check">
                                 <label for="MI" class="fw-bold btn btn-outline-danger">MI</label>
 
-                                <input type="radio" name="mencoes" value="MM" id="MM" class="btn-check">
+                                <input type="radio" name="mencoes" value="3" id="MM" class="btn-check">
                                 <label for="MM" class="fw-bold btn btn-outline-success">MM</label>
 
-                                <input type="radio" name="mencoes" value="MS" id="MS" class="btn-check">
+                                <input type="radio" name="mencoes" value="4" id="MS" class="btn-check">
                                 <label for="MS" class="fw-bold btn btn-outline-success">MS</label>
 
-                                <input type="radio" name="mencoes" value="SS" id="SS" class="btn-check">
+                                <input type="radio" name="mencoes" value="5" id="SS" class="btn-check">
                                 <label for="SS" class="fw-bold btn btn-outline-success bold">SS</label>
                             </div>
                         </div>

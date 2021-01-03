@@ -33,6 +33,7 @@ const state = {
     semestre: 0,
     apagaDados: false,
     previsao: false,
+    visitante: true,
 
     alteraApaga: function () {
         this.apagaDados = !this.apagaDados
@@ -150,7 +151,7 @@ function addMateria(){
 
     var mencao = Array.prototype.slice.call(mencaoEl, 0);
     mencao = mencao.filter(elem => elem.checked)
-    mencaoVal = mencao[0].id
+    mencaoVal = mencao[0].value
 
     var creditos = Array.prototype.slice.call(creditosEl, 0);
     creditos = creditos.filter(elem => elem.checked)
@@ -180,7 +181,6 @@ function copyEmail(){
     var message = document.getElementById('message-email')
     message.classList.toggle('d-none')
     setTimeout(message.classList.toggle('d-none'), 1250)
-
 }
 
 modalEl.addEventListener('hide.bs.modal', gui.showHeader)
@@ -196,5 +196,6 @@ calculadoraIRA.newSemestre()
 cookie.readCookie()
 calculadoraIRA.calculaIRA()
 semestres.update()
-// window.onload = modal.show()
-gui.showHeader()
+
+if(state.visitante) window.onload = modal.show()
+else gui.showHeader()
