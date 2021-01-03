@@ -67,6 +67,7 @@ main {
     -webkit-transform: rotate(12deg);
     -ms-transform: rotate(12deg);
     transform: rotate(12deg);
+    cursor: pointer;
 }
 
 header div {
