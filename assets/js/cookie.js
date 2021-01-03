@@ -7,10 +7,12 @@ const cookie = {
             
             cookies = cookies.map(elem => elem.split('='))
             cookies.forEach(function (elem) {
-                var list = elem[1].split('/')
-                list = list.filter(elem => elem.length > 0)
-                list = list.map(elem => elem.trim().split('|'))
-                cookie.obj[elem[0].trim()] = list
+                if(elem.length > 1){
+                    var list = elem[1].split('/')
+                    list = list.filter(elem => elem.length > 0)
+                    list = list.map(elem => elem.trim().split('|'))
+                    cookie.obj[elem[0].trim()] = list
+                }
             })
             
             if(cookie.obj['sizeSemestre']){
