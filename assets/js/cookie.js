@@ -1,6 +1,5 @@
 const cookie = {
     obj: {},
-
     
     readCookie: function(){
         if (document.cookie.length > 0) {
@@ -56,7 +55,7 @@ const cookie = {
     createCookie: {
         semestre: function(semestre){
             document.cookie = `s${state.semestre}=${semestre}`
-            document.cookie = `sizeSemestre=${calculadoraIRA.semestres.length}`
+            this.sizeSemestre()
         },
 
         previsao: function(dados, ira){
@@ -68,6 +67,11 @@ const cookie = {
         visitante: function(num){
             if(!num) num = 1
             document.cookie = `visitas=${num}`
+        },
+
+        sizeSemestre: function(num){
+            if(!num) document.cookie = num = calculadoraIRA.semestres.length
+            document.cookie = `sizeSemestre=${num}`
         },
         
         notPrevisao: function() {

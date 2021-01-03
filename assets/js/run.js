@@ -79,6 +79,7 @@ const semestres = {
         let resultado = window.confirm('Você tem certeza que deseja limpar tudo?\n Você também excluirá os registros de matérias salvas na sua máquina')
         if (resultado) {
             calculadoraIRA.clear()
+            cookie.createCookie.sizeSemestre(0)
             this.update()
             calculadoraIRA.calculaIRA()
         }
