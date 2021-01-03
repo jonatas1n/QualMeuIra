@@ -7,7 +7,7 @@ const logo = document.getElementById('logo')
 
 const form = document.getElementById('form-materia')
 
-const nomeEl = document.getElementById('name-materia')
+const nomeEl = document.getElementById('nome-materia')
 const creditosEl = document.getElementsByName('creditos')
 const mencaoEl = document.getElementsByName('mencoes')
 const addMateriaBtn = document.getElementById('add-materia')
@@ -26,6 +26,8 @@ const previsaoForm = document.getElementById('previsao-form')
 
 const proximoSemestreEl = document.getElementById('proximo-semestre')
 const anteriorSemestreEl = document.getElementById('anterior-semestre')
+
+const mailBtn = document.getElementById('mail-btn')
 
 const state = {
     semestre: 0,
@@ -194,5 +196,6 @@ calculadoraIRA.newSemestre()
 cookie.readCookie()
 calculadoraIRA.calculaIRA()
 semestres.update()
+
 if(state.visitante) window.onload = modal.show()
 else gui.showHeader()
