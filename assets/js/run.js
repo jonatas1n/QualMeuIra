@@ -31,6 +31,7 @@ const state = {
     semestre: 0,
     apagaDados: false,
     previsao: false,
+    visitante: true,
 
     alteraApaga: function () {
         this.apagaDados = !this.apagaDados
@@ -194,5 +195,5 @@ calculadoraIRA.newSemestre()
 cookie.readCookie()
 calculadoraIRA.calculaIRA()
 semestres.update()
-window.onload = modal.show()
+if(state.visitante) window.onload = modal.show()
 gui.showHeader()
