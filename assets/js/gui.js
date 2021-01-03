@@ -66,9 +66,9 @@ gui = {
 
         var p2 = document.createElement('h5')
         p2.classList.add('col-6')
-        if (['SS', 'MS', 'MM'].includes(el.mencao)) {
+        if (el.mencao >= 3) {
             p2.classList.add('text-success')
-        } else if (el.mencao == 'SR') {
+        } else if (el.mencao == 0) {
             p2.classList.add('text-secondary')
         } else {
             p2.classList.add('text-danger')
