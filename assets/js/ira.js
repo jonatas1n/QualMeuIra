@@ -36,7 +36,7 @@ const calculadoraIRA = {
         });
     },
 
-    addMateria(nome, creditos, mencao, pos){ // Função que insere uma nova matéria no semestre
+    addMateria(nome, creditos, mencao, pos){
         var materia = {
             id: this.materiaID,
             nome: nome,

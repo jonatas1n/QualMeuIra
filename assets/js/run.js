@@ -179,7 +179,6 @@ function copyEmail(){
     var message = document.getElementById('message-email')
     message.classList.toggle('d-none')
     setTimeout(message.classList.toggle('d-none'), 1250)
-
 }
 
 modalEl.addEventListener('hide.bs.modal', gui.showHeader)
