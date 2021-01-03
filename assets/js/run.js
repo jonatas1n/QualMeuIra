@@ -49,6 +49,10 @@ const state = {
         } else if (state.semestre) {
             state.semestre--
         }
+
+        if(state.semestre == 0){
+            anteriorSemestreEl.disabled = true
+        } else anteriorSemestreEl.disabled = false
     
         semestres.update()
     }
@@ -197,6 +201,7 @@ calculadoraIRA.newSemestre()
 cookie.readCookie()
 calculadoraIRA.calculaIRA()
 semestres.update()
+state.position(0)
 
 if(state.visitante) window.onload = modal.show()
 else gui.showHeader()
