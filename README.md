@@ -15,7 +15,7 @@ Pensando nessa dificuldade e em formas de resolvê-la, desenvolvi essa aplicaç�
 
 ---
 
-Essa aplicação foi toda desenvolvida em HTML, CSS e Javascript Baunilha (puro). 
+#### Essa aplicação foi toda desenvolvida em HTML, CSS e Javascript Baunilha (puro). 
 
 Fórmula para o cálculo do IRA:
 
