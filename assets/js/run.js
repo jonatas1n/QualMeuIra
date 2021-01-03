@@ -135,7 +135,7 @@ function setIRA() { // Função chamada para calcular o IRA e exibi-lo
     counter.innerHTML = `<b>IRA: ${ira}</b>`
 
     if (ira < 5) {
-        if (ira > 3) {
+        if (ira >= 3) {
             counter.classList.add('bg-sucess')
             counter.classList.remove('bg-danger')
         } else {
