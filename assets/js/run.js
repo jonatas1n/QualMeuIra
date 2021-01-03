@@ -149,7 +149,7 @@ function addMateria(){
 
     var mencao = Array.prototype.slice.call(mencaoEl, 0);
     mencao = mencao.filter(elem => elem.checked)
-    mencaoVal = mencao[0].id
+    mencaoVal = mencao[0].value
 
     var creditos = Array.prototype.slice.call(creditosEl, 0);
     creditos = creditos.filter(elem => elem.checked)

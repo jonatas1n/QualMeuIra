@@ -73,7 +73,7 @@ gui = {
         } else {
             p2.classList.add('text-danger')
         }
-        p2.innerHTML = `<h5><i class="fas fa-trophy"></i> Menção: <b>${el.mencao}</b></h5>`
+        p2.innerHTML = `<h5><i class="fas fa-trophy"></i> Menção: <b>${calculadoraIRA.mencoes[el.mencao]}</b></h5>`
 
         dados.appendChild(h4)
         dados.appendChild(p1)

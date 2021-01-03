@@ -30,7 +30,7 @@ const calculadoraIRA = {
             semestre.materias.forEach( ({mencao, creditos}, it) => {
                 if (it > 5) it = 5
 
-                this.valX += this.mencoes.indexOf(mencao) * creditos * (it + 1)
+                this.valX += mencao * creditos * (it + 1)
                 this.valY += creditos * (it + 1)
             })
         });
