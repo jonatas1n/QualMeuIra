@@ -7,6 +7,8 @@
     <title>Qual Meu IRA | UnB</title>
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
     <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
@@ -30,6 +32,33 @@
             <input onchange="previsao.calcula()" type="text" class="form-control previsao-field w-75">
         </div>
     </template>
+
+    <div class="modal fade" id="mail-modal" tabindex="-1" aria-labelledby="mail-modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content p-5">
+                <div class="modal-header">
+                    <h3><i class="fas fa-comments"></i> Envie uma mensagem para o Desenvolvedor</h3>
+                </div>
+                <div class="modal-body row">
+                    <div class="row my-2">
+                        <label for="mail-from" class="form-label"><i class="fas fa-at"></i> Seu E-mail</label>
+                        <input id="mail-from" type="text" class="form-control"
+                            placeholder="Seu melhor e-mail, por favor!">
+                    </div>
+                    <div class="row my-2">
+                        <label for="mail-message" class="form-label"><i class="fas fa-envelope"></i> Sua mensagem</label>
+                        <textarea name="mail-message" rows="4" id="mail-message" placeholder="Fala comigo, bebê! Envie sua sugestão, crítica, elogio ou comentário :-)"
+                            class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="modal-header">
+                    <button type="button" class="btn btn-primary col-6 offset-3" onclick="mail.send()" data-bs-dismiss="modal">
+                        <i class="fas fa-paper-plane"></i> <b>Enviar Mensagem</b>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade" id="welcome" tabindex="-1" aria-labelledby="welcome" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
@@ -79,8 +108,15 @@
         <div class="col-3 col-lg-2">
             <img src="assets/img/Logo.png" alt="logo" id="logo" class="shadow bg-light">
         </div>
-        <h2 class="p-2 border col-4 offset-5 col-lg-2 offset-lg-8 col-md-3 offset-md-6 text-center" id="ira-counter">
-            IRA: 5.0</h2>
+        <button data-bs-target="#mail-modal" data-bs-toggle="modal" style="place-items: center;" id="mail-btn"
+            class="btn d-flex btn-secondary col-lg-2 offset-lg-1 col-md-3 offset-md-0 col-1 offset-sm-2 offset-3 my-3 gap-2">
+            <div style="place-items: center; margin: auto" class="d-flex gap-1">
+                <i class="fas fa-envelope"></i> <span class="d-lg-flex d-md-flex d-sm-none d-none">Contato</span>
+            </div>
+        </button>
+        <h2 class="p-2 border col-4 offset-1 col-lg-3 offset-lg-4 col-md-3 offset-md-3 offset-sm-2 text-center" id="ira-counter">
+            IRA: 5.0
+        </h2>
     </header>
 
     <main class="container-fluid">
@@ -122,10 +158,10 @@
                 <div class="card shadow p-3">
                     <div id="form-materia" class="card-body w-100">
                         <div class="col-12 my-4">
-                            <label class="form-label" for="name-materia">
+                            <label class="form-label" for="nome-materia">
                                 <i class="fas fa-signature"></i>
                                 <b>Nome da Disciplina</b></label>
-                            <input id="name-materia" class="form-control w-100"
+                            <input id="nome-materia" class="form-control w-100"
                                 placeholder="O nome é obrigatório, mas não afeta o resultado" type="text">
                         </div>
 
@@ -236,6 +272,7 @@
 </body>
 <script src="assets/js/cookie.js"></script>
 <script src="assets/js/gui.js"></script>
+<script src="assets/js/mail.js"></script>
 <script src="assets/js/run.js"></script>
 
 </html>
