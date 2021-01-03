@@ -36,9 +36,12 @@
     <div class="modal fade" id="mail-modal" tabindex="-1" aria-labelledby="mail-modal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content p-5">
-                <div class="modal-header d-block">
-                    <h3><i class="fas fa-comments"></i> Envie uma mensagem para o Desenvolvedor</h3>
-                    <small>Uma crítica, um elogio, uma sugestão...</small>
+                <div class="modal-header align-items-start">
+                    <div class="d-block">
+                        <h3><i class="fas fa-comments"></i> Fale com o Desenvolvedor</h3>
+                        <small>Uma crítica, um elogio, uma sugestão...</small>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body row">
                     <div class="row my-2">
@@ -47,16 +50,18 @@
                             placeholder="Seu melhor e-mail, por favor!">
                     </div>
                     <div class="row my-2">
-                        <label for="mail-message" class="form-label"><i class="fas fa-envelope"></i> Sua mensagem</label>
-                        <textarea name="mail-message" rows="4" id="mail-message" placeholder="Fala comigo, bebê! Envie sua sugestão, crítica, elogio ou comentário :-)"
-                            class="form-control"></textarea>
+                        <label for="mail-message" class="form-label"><i class="fas fa-envelope"></i> Sua
+                            mensagem</label>
+                        <textarea name="mail-message" rows="4" id="mail-message"
+                            placeholder="Fala comigo, bebê! Envie sua sugestão, crítica, elogio ou comentário :-)"
+                            class="form-control">
+                        </textarea>
                     </div>
                 </div>
-                <div class="modal-header">
-                    <button type="button" class="btn btn-primary col-6 offset-3" onclick="mail.send()" data-bs-dismiss="modal">
-                        <i class="fas fa-paper-plane"></i> <b>Enviar Mensagem</b>
-                    </button>
-                </div>
+                <button type="button" class="m-auto btn btn-primary col-6" onclick="mail.send()"
+                    data-bs-dismiss="modal">
+                    <i class="fas fa-paper-plane"></i> <b>Enviar Mensagem</b>
+                </button>
             </div>
         </div>
     </div>
@@ -68,7 +73,8 @@
                     <img src="assets/img/Logo.png" id="logo-modal">
                 </div>
                 <div style="place-items: center" class="modal-body row">
-                    <img style="height: 92%" src="assets/img/feliz.png" alt="" class="img-fluid col-lg-4 col-8 offset-lg-0 offset-2">
+                    <img style="height: 92%" src="assets/img/feliz.png" alt=""
+                        class="img-fluid col-lg-4 col-8 offset-lg-0 offset-2">
                     <div class="col-lg-7 col-12 p-3 m-3">
                         <h1>Este é o <i>Qual Meu IRA?</i></h1>
                         <h5 class="gap-1">
@@ -94,8 +100,8 @@
                         </h5>
                     </div>
                 </div>
-                <div class="modal-header">
-                    <button type="button" class="btn btn-primary col-6 offset-3" data-bs-dismiss="modal">
+                <div class="modal-footer">
+                    <button type="button" style="margin: auto" class="btn btn-primary col-6" data-bs-dismiss="modal">
                         <b>Vamos lá!</b>
                     </button>
                 </div>
@@ -113,7 +119,8 @@
                 <i class="fas fa-envelope"></i> <span class="d-lg-flex d-md-flex d-sm-none d-none">Contato</span>
             </div>
         </button>
-        <h2 class="p-2 border col-4 offset-1 col-lg-3 offset-lg-4 col-md-3 offset-md-3 offset-sm-2 text-center" id="ira-counter">
+        <h2 class="p-2 border col-4 offset-1 col-lg-3 offset-lg-4 col-md-3 offset-md-3 offset-sm-2 text-center"
+            id="ira-counter">
             IRA: 5.0
         </h2>
     </header>
