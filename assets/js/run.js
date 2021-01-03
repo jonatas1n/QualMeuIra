@@ -155,7 +155,7 @@ function addMateria(){
 
     var creditos = Array.prototype.slice.call(creditosEl, 0);
     creditos = creditos.filter(elem => elem.checked)
-    creditosVal = creditos[0].value
+    creditosVal = parseInt(creditos[0].value)
 
     calculadoraIRA.addMateria(nome, creditosVal, mencaoVal, state.semestre);
     calculadoraIRA.calculaIRA();
