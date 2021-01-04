@@ -62,7 +62,7 @@ gui = {
 
         var p1 = document.createElement('h5')
         p1.classList.add('col-6')
-        p1.innerHTML = `<h5><i class="fas fa-coins"></i> C<span class="d-sm-none d-none d-lg-block d-md-block">réditos: </span><b>${el.creditos}</b></h5>`
+        p1.innerHTML = `<h5><i class="fas fa-coins"></i> <span class="d-sm-none d-none d-lg-block d-md-block">Créditos: </span><b>${el.creditos}</b></h5>`
 
         var p2 = document.createElement('h5')
         p2.classList.add('col-6')
