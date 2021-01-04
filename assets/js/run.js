@@ -65,7 +65,6 @@ const semestres = {
         if (calculadoraIRA.semestres.length == 0) calculadoraIRA.newSemestre()
 
         var semestre = calculadoraIRA.semestres[state.semestre]
-        semestre.materias = semestre.materias.reverse()
 
         semestrePanelView.innerHTML = `${state.semestre + 1}º Semestre`
         semestresArea.innerHTML = ''

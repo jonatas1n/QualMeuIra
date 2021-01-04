@@ -48,7 +48,7 @@ const calculadoraIRA = {
 
         if(this.semestres.length == 0) this.newSemestre()
 
-        this.semestres[pos].materias.push(materia)
+        this.semestres[pos].materias.unshift(materia)
     },
 
     delMateria(ID){
