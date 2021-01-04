@@ -26,10 +26,10 @@ const calculadoraIRA = {
         this.valX = this.initialValX
         this.valY = this.initialValY
         
-        this.semestres.forEach( semestre => {
-            semestre.materias.forEach( ({mencao, creditos}, it) => {
-                if (it > 5) it = 5
-
+        this.semestres.forEach( (semestre, it) => {
+            if (it > 5) it = 5
+            
+            semestre.materias.forEach( ({mencao, creditos}) => {
                 this.valX += mencao * creditos * (it + 1)
                 this.valY += creditos * (it + 1)
             })
