@@ -62,7 +62,7 @@ gui = {
 
         var p1 = document.createElement('h5')
         p1.classList.add('col-6')
-        p1.innerHTML = `<h5><i class="fas fa-coins"></i> <span class="d-sm-none d-none d-lg-block d-md-block">Créditos: </span><b>${el.creditos}</b></h5>`
+        p1.innerHTML = `<h5 class="d-block d-lg-flex d-md-flex d-sm-block gap-1"><i class="fas fa-coins"></i> <span class="d-sm-none d-none d-lg-block d-md-block">Créditos: </span><b>${el.creditos}</b></h5>`
 
         var p2 = document.createElement('h5')
         p2.classList.add('col-6')
@@ -73,7 +73,7 @@ gui = {
         } else {
             p2.classList.add('text-danger')
         }
-        p2.innerHTML = `<h5><i class="fas fa-trophy"></i> <span class="d-sm-none d-none d-lg-block d-md-block">Menção:</span> <b>${calculadoraIRA.mencoes[el.mencao]}</b></h5>`
+        p2.innerHTML = `<h5 class="d-block d-lg-flex d-md-flex d-sm-block gap-1"><i class="fas fa-trophy"></i> <span class="d-sm-none d-none d-lg-block d-md-block">Menção:</span> <b>${calculadoraIRA.mencoes[el.mencao]}</b></h5>`
 
         dados.appendChild(h4)
         dados.appendChild(p1)
