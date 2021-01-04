@@ -33,6 +33,96 @@
         </div>
     </template>
 
+    <div class="modal fade" id="modal-materia" tabindex="-1" aria-labelledby="modal-materia" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content p-5">
+                <div class="modal-header">
+                    <h3><i class="fas fa-book"></i> Adicione a Matéria</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-12 mb-4">
+                        <label class="form-label" for="nome-materia">
+                            <i class="fas fa-signature"></i>
+                            <b>Nome da Disciplina</b></label>
+                        <input id="modal-nome-materia" class="form-control w-100"
+                            placeholder="O nome é obrigatório, mas não afeta o resultado" type="text">
+                    </div>
+
+                    <div class="col-12 my-4">
+                        <label class="form-label" for="modal-creditos">
+                            <i class="fas fa-coins"></i> <b>Créditos da disciplina:</b>
+                        </label>
+                        <div class="d-flex">
+                            <div class="px-2">
+                                <input type="radio" value="1" name="modal-creditos" class="form-check-input">
+                                <label for="modal-creditos" class="form-check-label">1c</label>
+                            </div>
+                            <div class="px-2">
+                                <input type="radio" value="2" name="modal-creditos" class="form-check-input">
+                                <label for="modal-creditos" class="form-check-label">2c</label>
+                            </div>
+                            <div class="px-2">
+                                <input type="radio" value="3" name="modal-creditos" class="form-check-input">
+                                <label for="modal-creditos" class="form-check-label">3c</label>
+                            </div>
+                            <div class="px-2">
+                                <input type="radio" value="4" name="modal-creditos" class="form-check-input">
+                                <label for="modal-creditos" class="form-check-label">4c</label>
+                            </div>
+                            <div class="px-2">
+                                <input type="radio" value="5" name="modal-creditos" class="form-check-input">
+                                <label for="modal-creditos" class="form-check-label">5c</label>
+                            </div>
+                            <div class="px-2">
+                                <input type="radio" value="6" name="modal-creditos" class="form-check-input">
+                                <label for="modal-creditos" class="form-check-label">6c</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 my-4" style="overflow-x: auto; margin-bottom: 20px;">
+                        <label class="form-label d-flex" for="mencoes">
+                            <i class="fas fa-trophy"></i> <b>Menção Obtida:</b>
+                        </label>
+                        <div id="modal-mencoes" class="d-flex gap-2">
+                            <input id="mSR" type="radio" name="modal-mencoes" value="0" class="btn-check">
+                            <label for="mSR" class="fw-bold btn btn-outline-secondary">SR</label>
+
+                            <input id="mII" type="radio" name="modal-mencoes" value="1" class="btn-check">
+                            <label for="mII" class="fw-bold btn btn-outline-danger">II</label>
+
+                            <input id="mMI" type="radio" name="modal-mencoes" value="2" class="btn-check">
+                            <label for="mMI" class="fw-bold btn btn-outline-danger">MI</label>
+
+                            <input id="mMM" type="radio" name="modal-mencoes" value="3" class="btn-check">
+                            <label for="mMM" class="fw-bold btn btn-outline-success">MM</label>
+
+                            <input id="mMS" type="radio" name="modal-mencoes" value="4" class="btn-check">
+                            <label for="mMS" class="fw-bold btn btn-outline-success">MS</label>
+
+                            <input id="mSS" type="radio" name="modal-mencoes" value="5" class="btn-check">
+                            <label for="mSS" class="fw-bold btn btn-outline-success bold">SS</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer row">
+                    <div class="col-12 mb-2">
+                        <input onchange="state.alteraApaga();" class="form-check-input" id="apaga-itens"
+                            type="checkbox">
+                        <label class="form-label" for="apaga-itens">
+                            Apagar dados após adicionar matéria
+                        </label>
+                    </div>
+                    <button id="modal-add-materia" class="btn btn-primary col-8 m-auto" data-bs-dismiss="modal">
+                        <i class="fas fa-plus"></i>
+                        <h5>Adicionar Matéria</h5>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="mail-modal" tabindex="-1" aria-labelledby="mail-modal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content p-5">
@@ -127,9 +217,9 @@
 
     <main class="container-fluid">
         <div class="row">
-            <div class="col-12 col-lg-6 mb-lg-0 mb-4">
+            <div class="col-12 col-lg-6">
 
-                <div class="card shadow p-3 pb-0 mb-2">
+                <div class="card shadow p-3 pb-0 mb-1">
                     <div class="card-body p-0">
                         <div class="d-flex gap-2 row p-2">
                             <div class="col-lg-3 col-12">
@@ -161,7 +251,12 @@
                     </div>
                 </div>
 
-                <div class="card shadow p-3">
+                <button data-bs-target="#modal-materia" data-bs-toggle="modal"
+                    class="btn btn-primary d-md-none d-lg-none d-sm-block d-block shadow w-100 mb-1 mt-3">
+                    <h5><i class="fas fa-plus"></i> Adicionar Matéria</h5>
+                </button>
+
+                <div class="card shadow p-3 my-1 d-md-flex d-lg-flex d-sm-none d-none">
                     <div id="form-materia" class="card-body w-100">
                         <div class="col-12 my-4">
                             <label class="form-label" for="nome-materia">
@@ -231,7 +326,7 @@
                         <div class="col-12 my-4">
                             <button id="add-materia" class="btn w-100 btn-primary">
                                 <i class="fas fa-plus"></i>
-                                Adicionar Matéria
+                                <h5>Adicionar Matéria</h5>
                             </button>
                             <div class="col-12 my-3">
                                 <input onchange="state.alteraApaga();" class="form-check-input" id="apaga-itens"
@@ -246,7 +341,7 @@
             </div>
 
             <div class="col-12 col-lg-6 my-2 my-lg-0 h-100">
-                <button id="clear-all-btn" onclick="semestres.clear()"
+                <button onclick="semestres.clear()"
                     class="btn btn-secondary shadow offset-lg-7 col-lg-5 col-12 mb-2 align-items-center">
                     <h5 class="m-0">
                         <i class="fas fa-trash"></i> Limpar Tudo

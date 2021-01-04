@@ -5,14 +5,16 @@ const counter = document.getElementById('ira-counter')
 const icon = document.getElementById('icon')
 const logo = document.getElementById('logo')
 
-const form = document.getElementById('form-materia')
-
 const nomeEl = document.getElementById('nome-materia')
 const creditosEl = document.getElementsByName('creditos')
 const mencaoEl = document.getElementsByName('mencoes')
 const addMateriaBtn = document.getElementById('add-materia')
 
-const clearAllBtn = document.getElementById('clear-all-btn')
+const modalNomeEl = document.getElementById('modal-nome-materia')
+const modalCreditosEl = document.getElementsByName('modal-creditos')
+const modalMencaoEl = document.getElementsByName('modal-mencoes')
+const modalAddMateriaBtn = document.getElementById('modal-add-materia')
+
 const semestresArea = document.getElementById('semestres')
 const semestrePanelView = document.getElementById('semestrePanelView')
 
@@ -174,6 +176,29 @@ function addMateria(){
     semestres.update()
 }
 
+function modalAddMateria(){
+    var nome = modalNomeEl.value
+
+    var mencao = Array.prototype.slice.call(modalMencaoEl, 0);
+    mencao = mencao.filter(elem => elem.checked)
+    mencaoVal = mencao[0].value
+
+    var creditos = Array.prototype.slice.call(modalCreditosEl, 0);
+    creditos = creditos.filter(elem => elem.checked)
+    creditosVal = parseInt(creditos[0].value)
+
+    calculadoraIRA.addMateria(nome, creditosVal, mencaoVal, state.semestre);
+    calculadoraIRA.calculaIRA();
+
+    if (state.apaga) {
+        nomeEl.value = ''
+        mencao[0].checked = false
+        creditos[0].checked = false
+    }
+
+    semestres.update()
+}
+
 var textarea = document.createElement('textarea')
 textarea.innerHTML = 'jonatasgomesb@gmail.com'
 textarea.classList.add('d-none')
@@ -191,6 +216,8 @@ function copyEmail(){
 modalEl.addEventListener('hide.bs.modal', gui.showHeader)
 
 addMateriaBtn.addEventListener('click', addMateria)
+
+modalAddMateriaBtn.addEventListener('click', modalAddMateria)
 
 previsaoBtn.addEventListener('click', previsao.createField)
 
