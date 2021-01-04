@@ -46,6 +46,10 @@ gui = {
 
         excludeBtn.classList.add('btn')
         excludeBtn.classList.add('btn-secondary')
+        excludeBtn.classList.add('d-sm-none')
+        excludeBtn.classList.add('d-none')
+        excludeBtn.classList.add('d-md-block')
+        excludeBtn.classList.add('d-lg-block')
         excludeBtn.innerHTML = '<i class="fas fa-trash"></i>'
         excludeBtn.onclick = function () {
             calculadoraIRA.delMateria(el.id)
