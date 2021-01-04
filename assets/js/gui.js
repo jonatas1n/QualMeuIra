@@ -25,6 +25,10 @@ gui = {
 
         editBtn.classList.add('btn')
         editBtn.classList.add('btn-secondary')
+        editBtn.classList.add('d-sm-none')
+        editBtn.classList.add('d-none')
+        editBtn.classList.add('d-md-block')
+        editBtn.classList.add('d-lg-block')
         editBtn.innerHTML = '<i class="fas fa-edit"></i>'
         editBtn.onclick = function () {
             nomeEl.innerHTML = el.nome
@@ -46,10 +50,6 @@ gui = {
 
         excludeBtn.classList.add('btn')
         excludeBtn.classList.add('btn-secondary')
-        excludeBtn.classList.add('d-sm-none')
-        excludeBtn.classList.add('d-none')
-        excludeBtn.classList.add('d-md-block')
-        excludeBtn.classList.add('d-lg-block')
         excludeBtn.innerHTML = '<i class="fas fa-trash"></i>'
         excludeBtn.onclick = function () {
             calculadoraIRA.delMateria(el.id)
