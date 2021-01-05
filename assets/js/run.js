@@ -9,11 +9,15 @@ const nomeEl = document.getElementById('nome-materia')
 const creditosEl = document.getElementsByName('creditos')
 const mencaoEl = document.getElementsByName('mencoes')
 const addMateriaBtn = document.getElementById('add-materia')
+const creditosInput = document.getElementById('creditos-input')
+const outroCreditos = document.getElementById('outro-creditos')
 
 const modalNomeEl = document.getElementById('modal-nome-materia')
 const modalCreditosEl = document.getElementsByName('modal-creditos')
 const modalMencaoEl = document.getElementsByName('modal-mencoes')
 const modalAddMateriaBtn = document.getElementById('modal-add-materia')
+const modalCreditosInput = document.getElementById('modal-creditos-input')
+const modalOutroCreditos = document.getElementById('modal-outro-creditos')
 
 const semestresArea = document.getElementById('semestres')
 const semestrePanelView = document.getElementById('semestrePanelView')
@@ -162,7 +166,10 @@ function addMateria(){
 
     var creditos = Array.prototype.slice.call(creditosEl, 0);
     creditos = creditos.filter(elem => elem.checked)
-    creditosVal = parseInt(creditos[0].value)
+    if(creditos[0].value == 'outro'){
+        var creditosVal = parseInt(creditosInput.value)
+        if(creditosVal < 0) creditosVal *= -1
+    } else creditosVal = parseInt(creditos[0].value)
 
     calculadoraIRA.addMateria(nome, creditosVal, mencaoVal, state.semestre);
     calculadoraIRA.calculaIRA();
@@ -185,7 +192,10 @@ function modalAddMateria(){
 
     var creditos = Array.prototype.slice.call(modalCreditosEl, 0);
     creditos = creditos.filter(elem => elem.checked)
-    creditosVal = parseInt(creditos[0].value)
+    if(creditos[0].value == 'outro'){
+        var creditosVal = parseInt(modalCreditosInput.value)
+        if(creditosVal < 0) creditosVal *= -1
+    } else creditosVal = parseInt(creditos[0].value)
 
     calculadoraIRA.addMateria(nome, creditosVal, mencaoVal, state.semestre);
     calculadoraIRA.calculaIRA();

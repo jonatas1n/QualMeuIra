@@ -63,10 +63,6 @@
                                 <label for="modal-creditos" class="form-check-label">2c</label>
                             </div>
                             <div class="px-2">
-                                <input type="radio" value="3" name="modal-creditos" class="form-check-input">
-                                <label for="modal-creditos" class="form-check-label">3c</label>
-                            </div>
-                            <div class="px-2">
                                 <input type="radio" value="4" name="modal-creditos" class="form-check-input">
                                 <label for="modal-creditos" class="form-check-label">4c</label>
                             </div>
@@ -77,6 +73,13 @@
                             <div class="px-2">
                                 <input type="radio" value="6" name="modal-creditos" class="form-check-input">
                                 <label for="modal-creditos" class="form-check-label">6c</label>
+                            </div>
+                            <div style="width: 30%;" class="border-0 pt-0 px-2 d-flex gap-2 form-control">
+                                <div class="d-flex">
+                                    <input id="modal-outro-creditos" type="radio" value="outro" name="modal-creditos" class="form-check-input">
+                                    <label for="modal-outro-creditos" class="ms-1 form-check-label">Outro:</label>
+                                </div>
+                                <input id="modal-creditos-input" type="text" name="modal-creditos" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -281,10 +284,6 @@
                                     <label for="creditos" class="form-check-label">2c</label>
                                 </div>
                                 <div class="px-2">
-                                    <input type="radio" value="3" name="creditos" class="form-check-input">
-                                    <label for="creditos" class="form-check-label">3c</label>
-                                </div>
-                                <div class="px-2">
                                     <input type="radio" value="4" name="creditos" class="form-check-input">
                                     <label for="creditos" class="form-check-label">4c</label>
                                 </div>
@@ -295,6 +294,13 @@
                                 <div class="px-2">
                                     <input type="radio" value="6" name="creditos" class="form-check-input">
                                     <label for="creditos" class="form-check-label">6c</label>
+                                </div>
+                                <div class="border-0 pt-0 w-25 px-2 d-flex gap-2 form-control">
+                                    <div class="d-flex">
+                                        <input id="outro-creditos" type="radio" value="outro" name="creditos" class="form-check-input">
+                                        <label for="outro-creditos" class="ms-1 form-check-label">Outro:</label>
+                                    </div>
+                                    <input id="creditos-input" type="text" name="creditos" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -351,7 +357,7 @@
                 </button>
                 <div id="semestrePanel" class="d-flex bg-light shadow rounded my-lg-0 my-2">
                     <button id="anterior-semestre" class="btn btn-primary col-3">
-                        <i class="fas fa-angle-double-left"></i> 
+                        <i class="fas fa-angle-double-left"></i>
                         Anterior
                     </button>
                     <h4 id="semestrePanelView" class="col-6 rounded mt-2 text-center">Semestre 1</h4>
