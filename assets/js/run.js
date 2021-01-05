@@ -198,20 +198,6 @@ function modalAddMateria(){
     semestres.update()
 }
 
-var textarea = document.createElement('textarea')
-textarea.innerHTML = 'jonatasgomesb@gmail.com'
-textarea.classList.add('d-none')
-document.body.appendChild(textarea)
-
-function copyEmail(){
-    console.log("works")
-    textarea.select()
-    document.execCommand('copy')
-    var message = document.getElementById('message-email')
-    message.classList.toggle('d-none')
-    setTimeout(message.classList.toggle('d-none'), 1250)
-}
-
 modalEl.addEventListener('hide.bs.modal', gui.showHeader)
 
 addMateriaBtn.addEventListener('click', addMateria)

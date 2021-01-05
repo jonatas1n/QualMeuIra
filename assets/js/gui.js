@@ -66,10 +66,38 @@ gui = {
 
         var p1 = document.createElement('h5')
         p1.classList.add('col-6')
-        p1.innerHTML = `<h5 class="d-block d-lg-flex d-md-flex d-sm-block gap-1"><i class="fas fa-coins"></i> <span class="d-sm-none d-none d-lg-block d-md-block">Créditos: </span><b>${el.creditos}</b></h5>`
+        p1.classList.add('d-block')
+        p1.classList.add('d-lg-flex')
+        p1.classList.add('d-md-flex')
+        p1.classList.add('d-sm-block')
+        p1.classList.add('gap-1')
+
+        var span1 = document.createElement('span')
+        span1.classList.add('d-sm-none')
+        span1.classList.add('d-none')
+        span1.classList.add('d-lg-block')
+        span1.classList.add('d-md-block')
+        span1.innerHTML = 'Créditos: '
+
+        p1.innerHTML = `<i class="fas fa-coins"></i>`
+        p1.appendChild(span1)
+        p1.innerHTML += `<b>${el.creditos}</b>`
 
         var p2 = document.createElement('h5')
         p2.classList.add('col-6')
+        p2.classList.add('d-block')
+        p2.classList.add('d-lg-flex')
+        p2.classList.add('d-md-flex')
+        p2.classList.add('d-sm-block')
+        p2.classList.add('gap-1')
+
+        var span2 = document.createElement('h5')
+        span2.classList.add('d-sm-none')
+        span2.classList.add('d-none')
+        span2.classList.add('d-lg-block')
+        span2.classList.add('d-md-block')
+        span2.innerHTML = 'Menção: '
+
         if (el.mencao >= 3) {
             p2.classList.add('text-success')
         } else if (el.mencao == 0) {
@@ -77,15 +105,20 @@ gui = {
         } else {
             p2.classList.add('text-danger')
         }
-        p2.innerHTML = `<h5 class="d-block d-lg-flex d-md-flex d-sm-block gap-1"><i class="fas fa-trophy"></i> <span class="d-sm-none d-none d-lg-block d-md-block">Menção:</span> <b>${calculadoraIRA.mencoes[el.mencao]}</b></h5>`
+
+        p2.innerHTML = `<i class="fas fa-trophy"></i>`
+        p2.appendChild(span2)
+        p2.innerHTML += `<b>${calculadoraIRA.mencoes[el.mencao]}</b>`
 
         dados.appendChild(h4)
         dados.appendChild(p1)
         dados.appendChild(p2)
-        options.appendChild(editBtn)
         div.appendChild(dados)
+
+        options.appendChild(editBtn)
         options.appendChild(excludeBtn)
         div.appendChild(options)
+        
         li.appendChild(div)
 
         // Animação
