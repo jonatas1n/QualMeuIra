@@ -23,7 +23,7 @@ gui = {
         options.classList.add('col-2')
         options.classList.add('gap-0')
         options.classList.add('gap-lg-1')
-        options.classList.add('gap-md-1')
+        options.classList.add('gap-md-0')
         options.classList.add('gap-sm-0')
         options.classList.add('options')
 
@@ -94,6 +94,7 @@ gui = {
         p2.classList.add('d-md-flex')
         p2.classList.add('d-sm-block')
         p2.classList.add('gap-1')
+        p2.classList.add('align-content-start')
 
         var span2 = document.createElement('h5')
         span2.classList.add('d-sm-none')
