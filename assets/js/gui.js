@@ -17,10 +17,14 @@ gui = {
         div.classList.add('row')
 
         dados.classList.add('d-flex')
-        dados.classList.add('col-8')
+        dados.classList.add('col-10')
         dados.classList.add('row')
 
-        options.classList.add('col-4')
+        options.classList.add('col-2')
+        options.classList.add('gap-0')
+        options.classList.add('gap-lg-1')
+        options.classList.add('gap-md-1')
+        options.classList.add('gap-sm-0')
         options.classList.add('options')
 
         editBtn.classList.add('btn')
