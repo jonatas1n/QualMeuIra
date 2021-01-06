@@ -23,7 +23,7 @@ const cookie = {
                     var dados = cookie.obj['s' + i]
         
                     if (dados) dados.forEach(elem => {
-                        calculadoraIRA.addMateria(elem[0], elem[1], elem[2], i)
+                        calculadoraIRA.addMateria(elem[0], elem[1], elem[2], i, true)
                     })
                 }
         

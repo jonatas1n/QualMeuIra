@@ -36,19 +36,20 @@ const calculadoraIRA = {
         });
     },
 
-    addMateria(nome, creditos, mencao, pos){
+    addMateria(nome, creditos, mencao, sem, pos){
         var materia = {
             id: this.materiaID,
             nome: nome,
             creditos: creditos,
             mencao: mencao
         }
-
+        
         this.materiaID++
-
+        
         if(this.semestres.length == 0) this.newSemestre()
-
-        this.semestres[pos].materias.unshift(materia)
+        
+        if(pos) this.semestres[sem].materias.push(materia)
+        else this.semestres[sem].materias.unshift(materia)
     },
 
     delMateria(ID){
