@@ -163,9 +163,12 @@ function addMateria(){
     var mencao = Array.prototype.slice.call(mencaoEl, 0);
     mencao = mencao.filter(elem => elem.checked)
     mencaoVal = mencao[0].value
-
+    
     var creditos = Array.prototype.slice.call(creditosEl, 0);
     creditos = creditos.filter(elem => elem.checked)
+    
+    if(!mencao.length || !creditos.length) return
+
     if(creditos[0].value == 'outro'){
         var creditosVal = parseInt(creditosInput.value)
         if(creditosVal < 0) creditosVal *= -1
