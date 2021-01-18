@@ -1,4 +1,4 @@
-<img src="assets/img/Logo.svg" width="50%">
+<img src="assets/img/svg/Logo.svg" width="50%">
     
 # Qual meu IRA? | UnB
 Uma das métricas mais importantes do desempenho do estudante universitário é o IRA, Índice de Rendimento Acadêmico. Quanto mais alto o IRA, maior a oportunidade de matrícula, participação em projetos de pesquisa, eventos, entre outros. 
@@ -15,8 +15,13 @@ Pensando nessa dificuldade e em formas de resolvê-la, desenvolvi essa aplicaç�
 
 ---
 
-#### Essa aplicação foi toda desenvolvida em HTML, CSS e Javascript Baunilha (puro). 
+#### Essa aplicação foi toda desenvolvida em HTML, CSS e Javascript 
 
 Fórmula para o cálculo do IRA:
 
 ![IRA](assets/img/formula.png)
+
+
+Neste projeto, tentei implementar uma página com o mínimo de interações e mudanças de páginas possível para que o usuário não se sinta perdido e possa utilizar a ferramenta como uma fonte de consulta, não uma plataforma. Por isso, a opção para acessar conteúdos sobre o desenvolvedor ou entrar em contato foram feitas através de modais. 
+
+As frameworks utilizadas foram Bootstrap e Mail.js, para design e recepção de emails dos usuários, respectivamente, permitindo melhor responsividade e personalização e reduzindo o caminho necessário para o contato.
